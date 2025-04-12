@@ -1,0 +1,21 @@
+main {
+   padding-top: 72px;
+}
+/* Dark Mode */
+.dark-mode {
+   background-color: #00082e;
+   color: white;
+}
+.dark-mode-toggle {
+   width: 42px;
+   display: flex;
+   align-items: center;
+   background-color: aliceblue;
+   border-radius: 16px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+.dark-mode .dark-mode-toggle {
+   color: black;
+}

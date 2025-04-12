@@ -1,0 +1,47 @@
+.about {
+   padding: 0px;
+   font-family: 'Segoe UI', sans-serif;
+   color: #222;
+   /* background-image: url('../assets/images/BG1.svg'); */
+   background-size: cover;
+   height: 100vh;
+}
+.about-container {
+   max-width: 900px;
+   margin: auto;
+   text-align: center;
+}
+ 
+.about h2 {
+   font-size: 2.5rem;
+   margin-bottom: 10px;
+   color: #0075d4;
+}
+ 
+.tagline {
+   font-style: italic;
+   color: #777;
+   margin-bottom: 40px;
+}
+ 
+.about-content {
+   text-align: left;
+   line-height: 1.7;
+}
+ 
+.about-content p {
+   margin-bottom: 20px;
+   color: #444;
+}
+
+.dark-mode {
+   .about{
+      color: #fff;
+   }
+   .tagline {
+      color: #cbc8c8;
+   }
+   .about-content p {
+      color: #fafafa;
+   }
+}
