@@ -17,7 +17,7 @@ function Navbar() {
          </div>
          <div class="navLinks">
             <Link to={'/'}>Home</Link>
-            <Link to={'about'}>About</Link>
+            <Link to={'/about'}>About</Link>
             <Link to='/services'>Services</Link>
             {/* <ServiceComponent/> */}
             <div class="productDropdown">
