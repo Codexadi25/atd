@@ -36,7 +36,7 @@ const ChatWidget = () => {
           text: "Seems like you are away and everything is working fine. If you'r still facing any issue just ping me here, we'll get back to you as soon as possible! 🕒",
         },
       ]);
-    }, 60000); // 1 minute
+    }, 180000); // 3 minute
 
     return () => clearTimeout(awayTimeoutRef.current);
   }, [open, lastUserMsgTime, messages]);
