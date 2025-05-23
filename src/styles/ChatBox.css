@@ -41,6 +41,10 @@
   align-items: center;
 }
 
+.closeBtn{
+  border-radius: 50%;
+}
+
 /* .chat-body {
   flex: 1;
   padding: 10px;
@@ -97,7 +101,8 @@
 /* User message: aligned to right */
 .chat-msg.user {
   align-self: flex-end;
-  background-color: #dcf8c6;
+  background-color: #007bff;
+  color: #fff;
   border-bottom-right-radius: 2px;
 }
 
@@ -105,10 +110,11 @@
   content: "";
   position: absolute;
   bottom: 0;
-  right: -10px;
+  right: -8px;
   width: 0;
   height: 0;
-  border-top: 10px solid #dcf8c6;
+  rotate: 180deg;
+  border-top: 10px solid #007bff;
   border-left: 10px solid transparent;
 }
 
@@ -123,9 +129,10 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: -10px;
+  left: -8px;
   width: 0;
   height: 0;
+  rotate: 180deg;
   border-top: 10px solid #ffffff;
   border-right: 10px solid transparent;
 }

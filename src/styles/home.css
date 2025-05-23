@@ -61,13 +61,16 @@
    display: flex;
    justify-content: center;
    position: relative;
+   width: 100vw;
+   overflow: hidden;
    top: -150px;
-   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+   /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
    gap: 20px;
    max-width: 90vw;
    height: auto;
    margin: auto;
 }
+/* 
 .card {
    width: 250px;
    height: 350px;
@@ -81,4 +84,4 @@
    text-overflow: wrap;
    color: rgb(0, 0, 0);
    font-weight: 200;
-}
+} */

@@ -24,7 +24,7 @@ function Navbar() {
                <Link to='/products' class="productButton">Products</Link>
                <div class="products">
                   <Link to='/Acebotv2.3'>Acebot v2.3</Link>
-                  <Link to='/Diretov'>Direto v1.4</Link>
+                  <Link to='/Diretov1.4'>Direto v1.4</Link>
                </div>
             </div>
             <Link to='/pricing'>Pricings</Link>

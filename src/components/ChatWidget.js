@@ -9,15 +9,42 @@ const ChatWidget = () => {
     { sender: "bot", text: "Hi! Ask me anything about our services 😊" },
   ]);
   const [input, setInput] = useState("");
-  
+  const [lastUserMsgTime, setLastUserMsgTime] = useState(Date.now());
+
   const chatEndRef = useRef(null); 
+  const awayTimeoutRef = useRef(null);
+
   // ✅ AUTO-SCROLL when messages update
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages])
 
+  // ⏰ Away message automation
+  useEffect(() => {
+    if (!open) return;
+    if (awayTimeoutRef.current) clearTimeout(awayTimeoutRef.current);
+
+    // Only set away message if last message is not already away
+    const lastMsg = messages[messages.length - 1];
+    if (lastMsg && lastMsg.sender === "bot" && lastMsg.text.includes("Okay! Thanks")) return;
+
+    awayTimeoutRef.current = setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "Seems like you are away and everything is working fine. If you'r still facing any issue just ping me here, we'll get back to you as soon as possible! 🕒",
+        },
+      ]);
+    }, 60000); // 1 minute
+
+    return () => clearTimeout(awayTimeoutRef.current);
+  }, [open, lastUserMsgTime, messages]);
+
   const handleSend = async () => {
     if (!input.trim()) return;
+
+    setLastUserMsgTime(Date.now()); // Reset away timer on user message
 
     const userMsg = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMsg]);
@@ -26,7 +53,6 @@ const ChatWidget = () => {
     if (found) {
       const botMsg = { sender: "bot", text: found.answer };
       setMessages((prev) => [...prev, botMsg]);
-      // setMessages((prev) => [...prev, { sender: "bot", text: found.answer }]);
     } else {
       const fallback = {
         sender: "bot",
@@ -45,12 +71,6 @@ const ChatWidget = () => {
           }
         ])
       }
-      // // Send to email using Backend server
-      // await fetch("/api/send-query", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ question: input }),
-      // });
     }
     setInput("");
   };
@@ -64,7 +84,7 @@ const ChatWidget = () => {
         <div className="chat-box">
           <div className="chat-header">
             <span>Chat with us</span>
-            <button onClick={() => setOpen(false)}>×</button>
+            <button className="closeBtn" onClick={() => setOpen(false)}>×</button>
           </div>
           <div className="chat-body">
             {messages.map((msg, i) => (
