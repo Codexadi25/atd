@@ -1,97 +1,25 @@
-:root {
-  --transition-time: 0.8s;
-  --scale-center: 1.1;
-  --scale-left: 0.7;
-  --scale-right: 0.9;
-  --blur-left: 4px;
-  --blur-right: 1.5px;
-  --blur-center: 0px;
-  --opacity-center: 1;
-  --opacity-side: 0.8;
-  --translate-left: -150%;
-  --translate-right: 50%;
-  --translate-center: -50%;
-}
-
 .carousel-container {
-  width: 100%;
-  max-width: 900px;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  height: 320px;
-}
-
-.carousel-row {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 260px;
-  height: 220px;
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  margin: 40px auto;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   text-align: center;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-  filter: blur(8px);
-  transition:
-    transform var(--transition-time) ease-in-out,
-    opacity var(--transition-time) ease-in-out,
-    filter var(--transition-time) ease-in-out,
-    z-index 0.3s ease;
-  z-index: 1;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Center */
-.carousel-card.center {
-  transform: translate(var(--translate-center), -50%) scale(var(--scale-center));
-  filter: blur(var(--blur-center));
-  opacity: var(--opacity-center);
-  z-index: 3;
-}
-
-/* Right */
-.carousel-card.right {
-  transform: translate(var(--translate-right), -50%) scale(var(--scale-right));
-  filter: blur(var(--blur-right));
-  opacity: var(--opacity-side);
-  z-index: 2;
-}
-
-/* Left */
-.carousel-card.left {
-  transform: translate(var(--translate-left), -50%) scale(var(--scale-left));
-  filter: blur(var(--blur-left));
-  opacity: var(--opacity-side);
-  z-index: 1;
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #bbb;
-  transition: background 0.3s ease;
-}
-
-.dot.active {
-  background: #1976d2;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }

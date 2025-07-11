@@ -1,0 +1,103 @@
+body{
+   background-color: #f8f8f8;
+}
+.errContainer{
+   background-image: blur(8px);
+   background-color: #f8f8f88c;
+   box-shadow: #f8f8f88c 8px 16px 64px ;
+   border-radius: 8px;
+   z-index: 2;
+   padding: 10px;
+}
+.errorPage{
+   background-image: url("../assets/images/Basement.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   cursor: none;
+}
+.errHead {
+   font-size: 40px;
+   padding: 10px;
+}
+.errHead > code {
+   color: #ff008c;
+   font-weight: 500;
+   h3{
+     font-weight: 100;
+   }
+}
+.errStack{
+   display: flex;
+   position: relative;
+   text-align: left;
+   background-color: #f8f8f8;
+   border: 1px solid red;
+}
+.alert{
+   border-radius: 15px;
+}
+.errFoot{
+   display: flex;
+   width: 100%;
+   align-items: center;
+   float: right;
+   background-color: #f8f8f8;
+   border-radius: inherit;
+}
+.errFoot>.btns{
+   display: flex;
+   width: 100%;
+   align-items: center;
+   justify-content: space-evenly;
+   margin: 20px;
+}
+.errBtn{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid #000;
+   border-radius: 8px;
+   padding: 8px;
+   width: 20%;
+   text-align: center;
+   text-decoration: none;
+   color: #000;
+   font-weight: bold;
+   background-color: #fff;
+}
+.priorL{
+   border: 2px solid #ff000055;
+   outline: 4px solid #ff000050;
+   background-color: #ff0000;
+   color: #fff;
+}
+.priorH{
+   border: 2px solid #00ff0055;
+   outline: 4px solid #00ff0050;
+   background-color: #00bb00;
+   color: #fff;
+}
+.errBtn:hover{
+   border: 2px solid #fff;
+   outline: 1px;
+   transform: scale(1.05);
+}
+
+
+.overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   pointer-events: none;
+   mix-blend-mode: darken;
+   background-blend-mode: darken;
+   transition: background 0.1s ease;
+   z-index: 1;
+}

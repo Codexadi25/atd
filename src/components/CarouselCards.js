@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '@mui/material';
-import '../styles/Carousel.css';
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import "../styles/Carousel.css";
 
-const cardsData = [
+const slides = [
   {
     title: "Business Starter Plan",
     description: "Kickstart your digital dream — for the price of a pizza.",
@@ -33,56 +33,70 @@ const cardsData = [
     details: "Includes: SEO, social media setup, branding kit",
     price: "From ₹999/month",
   },
+  {
+    title: "Custom SaaS Platform Build",
+    description: "Your idea, our code — built to scale and serve.",
+    details: "Includes: Full-stack development, cloud integration, admin panel",
+    price: "Starts at ₹4999/month",
+  },
+  {
+    title: "Brand Identity & UI/UX Package",
+    description: "Design that speaks your brand's language.",
+    details: "Includes: Logo, color palette, UI kit, wireframes",
+    price: "Flat ₹2999/project",
+  }
 ];
 
-const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const total = cardsData.length;
+export default function SlideCarousel() {
+  const [index, setIndex] = useState(0);
+  const total = slides.length;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % total);
-    }, 3000);
+      setIndex((prev) => (prev + 1) % total);
+    }, 4000);
     return () => clearInterval(interval);
   }, [total]);
 
-  const getCard = (offset) => {
-    const index = (currentIndex + offset + total) % total;
-    return cardsData[index];
+  const getSlide = (offset) => {
+    const i = (index + offset + total) % total;
+    return slides[i];
   };
 
-  const visibleCards = [
-    { ...getCard(-1), position: 'left' },
-    { ...getCard(0), position: 'center' },
-    { ...getCard(1), position: 'right' }
-  ];
+  const scaleAndBlur = [0.6, 0.8, 1, 0.8, 0.6];
+  const blurLevels = ["4px", "2px", "0px", "2px", "4px"];
 
   return (
     <div className="carousel-container">
-      <div className="carousel-row">
-        {visibleCards.map((item, idx) => (
-          <Card key={idx} className={`carousel-card ${item.position}`}>
-            <CardContent>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <p>{item.details}</p>
-              <p><strong>{item.price}</strong></p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <div className="carousel-dots">
-        {cardsData.map((_, index) => (
-          <span
-            key={index}
-            className={`dot ${index === currentIndex ? 'active' : ''}`}
-          />
-        ))}
-      </div>
+      <AnimatePresence initial={false}>
+        {[-2, -1, 0, 1, 2].map((offset, i) => {
+          const slide = getSlide(offset);
+          const scale = scaleAndBlur[i];
+          const blur = blurLevels[i];
+          return (
+            <motion.div
+              key={slide.title}
+              className="card"
+              initial={{ opacity: 0, scale: 0.6, x: offset * 100 }}
+              animate={{
+                scale,
+                x: offset * 200,
+                filter: `blur(${blur})`,
+                zIndex: 5 - Math.abs(offset),
+                opacity: 1,
+              }}
+              exit={{ opacity: 0, scale: 0.6, x: offset < 0 ? -200 : 200 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <h3>{slide.title}</h3>
+              <p>{slide.description}</p>
+              <small>{slide.details}</small>
+              <br/>
+              <strong>{slide.price}</strong>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
     </div>
   );
-};
-
-export default Carousel;
-
-
+}

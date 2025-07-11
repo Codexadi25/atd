@@ -1,0 +1,139 @@
+.footer{
+   width: 100vw;
+   background-color: #131A22;
+}
+.footer__body{
+   height: auto;
+   padding: 30px;
+   background-color: #131A22 #232F3E;
+   display: flex;
+}
+.footer__box{
+   display: grid;
+   flex: 0.35;
+   border-right: 1px solid #ddd;
+   color: #eee;
+}
+.footer__box > .tagline{
+   color: #dddd;
+   width: fit-content;
+   text-align: left;
+}
+.footlogo{
+   height: 70px;
+   filter: drop-shadow(1px 1px 1px #fff);
+}
+hr{
+   width: 95vw;
+}
+
+a{
+   color: #999;
+}
+a:hover{
+   color:#ccc;
+   
+}
+.sections>.heading{
+   color: #ddd;
+   font-weight: 700;
+}
+.footer__links{
+   display: grid;
+   flex: 0.65;
+   grid-template-columns: repeat(3,1fr);
+   align-items: center;
+   justify-content: space-around;
+}
+.sections{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.links{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.mail:hover{color: rgba(255, 0, 0, 0.831);}
+.tel:hover{color: rgb(104, 0, 249);}
+.yt:hover{color: red;}
+.ig:hover{color: #E1306C;}
+.fb:hover{color: #0866ff;}
+.wa:hover{color: #25d366;}
+
+
+
+
+.footer__bottom{
+   display: flex;
+   height: auto;
+   width: 100vw;
+   color: #555;
+   background-color: #0F1111;
+   justify-content: space-around;
+   padding: 10px 0px;
+   margin: auto;
+}
+.footer__bottomText{
+   color: #555;
+}
+
+@media screen and (max-width: 800px) {
+   .footer__body{
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: none;
+   }
+   .footer__box{
+      display: block;
+      border-right: none;
+      border-bottom: 1px solid #fff;
+      margin-bottom: 20px;
+   }
+   .tagline{
+      text-align: center;
+   }
+   .footer__links{
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding:  0px 30px 0px 30px;
+   }
+   .links{
+      text-align: left;
+      text-decoration: none;
+      width: max-content;
+   }
+   .footer__bottom{
+      flex-direction: column;
+   }
+   hr{
+      margin: auto;
+      height: 2px;
+      background-color: #ddd;
+      border-radius: 2px;
+      width: 80vw;
+   }
+   vr{
+      display: none;
+   }
+   .footer__bottomText{
+      margin: 5px;
+   }
+   .dev{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   .social{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+   }
+   .s-lable{
+      display: none;
+   }
+}

@@ -2,9 +2,9 @@ import React from 'react';
 import "../styles/navbar.css";
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/images/AdityaTechNDevoopsICON.png';
-import Tooltip from '@mui/material/Tooltip';
+// import Tooltip from '@mui/material/Tooltip';
 import DarkModeToggle from "./DarkModeToggle.js";
-import ServiceComponent from './ServiceComponent.js';
+// import ServiceComponent from './ServiceComponent.js';
 
 function Navbar() {
 
@@ -23,6 +23,9 @@ function Navbar() {
             <div class="productDropdown">
                <Link to='/products' class="productButton">Products</Link>
                <div class="products">
+                  <div class="prodGraph">
+                     
+                  </div>
                   <Link to='/Acebotv2.3'>Acebot v2.3</Link>
                   <Link to='/Diretov1.4'>Direto v1.4</Link>
                </div>
