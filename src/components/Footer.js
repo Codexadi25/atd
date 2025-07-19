@@ -44,8 +44,8 @@ function Footer() {
             <div className='heading'>
               Businesses
             </div>
-            <a href='/store' className='links'>Fexo</a>
-            <a href='/home' className='links'>Dhan Laxmi Enterprises</a> 
+            <a href='/store' className='links'>Aditya Tech. & Devoops.</a>
+            <a href='/home' className='links'>Royal Grey Enterprises</a> 
           </div>
           <div className='sections dev'>
             <div className='heading'>Devloper's Contact
