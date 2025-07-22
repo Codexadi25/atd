@@ -23,3 +23,13 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
+
+
+@media screen and (max-width: 400px) {
+  .carousel-container{
+    width: 95vw;
+    margin: none;
+    overflow: visible;
+    scale: .6;
+  }  
+}

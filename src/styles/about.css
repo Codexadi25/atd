@@ -4,9 +4,9 @@
    color: #222;
    /* background-image: url('../assets/images/BG1.svg'); */
    background-size: cover;
-   height: 100vh;
+   height: auto;
 }
-.about-container {
+.aboutContainer {
    max-width: 900px;
    margin: auto;
    text-align: center;
@@ -24,14 +24,28 @@
    margin-bottom: 40px;
 }
  
-.about-content {
+.aboutContent {
    text-align: left;
    line-height: 1.7;
 }
  
-.about-content p {
+.aboutContent p {
    margin-bottom: 20px;
    color: #444;
+}
+
+@media screen and (max-width: 600px) {
+   .aboutContainer{
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+   }
+   .aboutContent > p{
+      width: 90vw;
+      align-items: center;
+      text-align: center;
+      margin: auto;
+   }
 }
 
 .dark-mode {
@@ -41,7 +55,7 @@
    .tagline {
       color: #cbc8c8;
    }
-   .about-content p {
+   .aboutContent p {
       color: #fafafa;
    }
 }

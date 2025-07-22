@@ -1,5 +1,10 @@
 import React, { useRef } from 'react';
+import '../styles/Contact.css';
 import emailjs from '@emailjs/browser';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+
 
 function Contact() {
   const form = useRef();
@@ -8,10 +13,10 @@ function Contact() {
     e.preventDefault();
 
     emailjs.sendForm(
-      'service_6ai9cft',         // Your Service ID
-      'template_2xb90p7',         // Your Template ID
-      form.current,              // Form ref
-      '1a1enk0G-nfJjaAJ3'          // Your Public Key from EmailJS
+      'service_6ai9cft',          // Service ID
+      'template_2xb90p7',         // Template ID
+      form.current,               // Form ref
+      '1a1enk0G-nfJjaAJ3'         // Public Key from EmailJS
     )
     .then((result) => {
       console.log('✅ Message sent:', result.text);
@@ -23,21 +28,27 @@ function Contact() {
     });
   };
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="name" required />
+    <div className='contactUsPage'>
+      <h2>Contact Us</h2>
+      <form className='form' ref={form} onSubmit={sendEmail}>
+        <TextField id="outlined-basic" type="text" name="name" label="Name" variant="outlined" required />
+        {/* <input type="email" name="email" required /> */}
+        <TextField id="outlined-basic" type="email" name="email" label="Email" variant="outlined" required />
+        <TextField id="outlined-basic" type="text" name="subject" label="Subject Line" variant="outlined"/>
+        <TextField
+            id="outlined-multiline-static"
+            label="Message"
+            multiline
+            rows={4}
+            required
+          />
+          <TextField id="outlined-basic" type="phone" name="phone" label="Contact no." variant="outlined" required />
 
-      <label>Email</label>
-      <input type="email" name="email" required />
-
-      <label>Subject</label>
-      <input type="text" name="subject" required />
-
-      <label>Message</label>
-      <textarea name="message" required />
-
-      <button type="submit">Raise Ticket</button>
-    </form>
+        <Button type='submit' variant="contained" endIcon={<SendIcon />}>
+          Send
+        </Button>
+      </form>
+    </div>
   );
 }
 

@@ -2,19 +2,19 @@ import "../styles/testimonials.css";
 
 const testimonials = [
   {
-    name: "Ravi Sharma",
-    position: "Founder, Startify",
+    name: "Rahul Gupta",
+    position: "Founder, Dhan Laxmi Enterprises",
     message: "AdityaTechDevoOps helped us launch our product 3x faster with an amazing UI!",
   },
   {
     name: "Pooja Mehta",
     position: "CTO, FinVerse",
-    message: "Great team! They built our entire web platform with scalable architecture.",
+    message: "Highly professional and prompt. Loved working with the team!",
   },
   {
-    name: "Akash Verma",
-    position: "Product Manager, HealthTrack",
-    message: "Highly professional and prompt. Loved working with the team!",
+    name: "Aishwarya Bhatia",
+    position: "Co-founder & CMO, Xpress",
+    message: "Great team! They built our entire web platform with scalable architecture.",
   },
 ];
 

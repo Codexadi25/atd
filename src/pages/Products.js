@@ -7,8 +7,8 @@ function Products() {
     <div>
       <ErrorComponent
          errorCode="503"
-         errorMessage="Service Unavailable"
-         errorDescription="You are seeing this because, an unknown error occured."
+         errorMessage="Service Unavailable : Maintenance Downtime"
+         errorDescription="You are seeing this because, an unknown error occured. Error has already been reported."
       />
     </div>
   )

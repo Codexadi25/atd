@@ -6,27 +6,28 @@
    border-bottom: 1px solid #ebebeb;
    display: flex;
    align-items: center;
+   justify-content: space-between;
    flex-direction: row;
    position: fixed;
    z-index: 2;
 }
 .navContainer{
-   height: 64px;
    display: flex;
    align-items: center;
    padding: 8px;
    margin: 0 16px;
    flex: .25;
-   img{
-      margin: auto;
-      height: 42px;
-   }
-
 }
 .navContainer a:hover ::after{
    width: 0;
 }
-
+.navContainer > .logo > img{
+   height: 42px;
+   width: auto;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+}
 .navLinks{
    display: flex;
    text-decoration: none;
@@ -118,4 +119,67 @@
 .productDropdown:hover .products {
    display: block;
    box-shadow: 0px 8px 16px 16px #c7d8fb33;
+}
+
+.navRight{
+   display: flex;
+   align-items: center;
+}
+
+.closeMenueBtn, .menueIcon{
+   visibility: hidden;
+}
+/* Changing Nav Links Style in Mobile Devices */
+@media screen and (max-width: 600px) {
+   .navLinkHidden{
+      display: none;
+   }
+   .closeMenueBtn, .menueIcon{
+      visibility: visible;
+   }
+   .closeMenueBtn{
+      display: flex;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+   }
+   .navLinkActive{
+      top: 2px;
+      right: -1px;
+      width: 80vw;
+      height: 90vh;
+      position: absolute;
+      flex-direction: column;
+      background-color: #abc4ff21;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      outline: 1px solid rgb(96, 170, 255);
+      border-radius: 8px 0 0 8px;
+   }
+   .navRight{
+      width: 40vw;
+      display: flex;
+      align-items: left;
+      align-items: center;
+      justify-content: space-evenly;
+      flex: row;
+   }
+   .dark-mode {
+      .navLinks a{
+         color: #ebebeb;
+      }
+      .navLinks{
+         color: #000;
+      }
+      .menueIcon{
+         color: #000;
+      }
+      .navLinkActive{
+         background-color: #0000005b;
+      }
+      .products a{
+         color: #000;
+         outline: #004cff;
+      }
+   }
 }

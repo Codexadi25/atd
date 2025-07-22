@@ -2,26 +2,35 @@
    width: 100vw;
    background-color: #131A22;
 }
-.footer__body{
+.footerBody{
    height: auto;
    padding: 30px;
    background-color: #131A22 #232F3E;
    display: flex;
 }
-.footer__box{
-   display: grid;
+.footerBox{
+   display: flex;
+   flex-direction: column;
+   align-items: start;
+   justify-content: space-around;
    flex: 0.35;
    border-right: 1px solid #ddd;
    color: #eee;
 }
-.footer__box > .tagline{
+.footHero{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-evenly;
+}
+.footLogo{
+   height: 125px;
+   filter: drop-shadow(1px 1px 1px #fff);
+}
+.footHeroText > .tagline{
    color: #dddd;
    width: fit-content;
    text-align: left;
-}
-.footlogo{
-   height: 70px;
-   filter: drop-shadow(1px 1px 1px #fff);
 }
 hr{
    width: 95vw;
@@ -31,14 +40,13 @@ a{
    color: #999;
 }
 a:hover{
-   color:#ccc;
-   
+   color:#ccc;   
 }
 .sections>.heading{
    color: #ddd;
    font-weight: 700;
 }
-.footer__links{
+.footerLinks{
    display: grid;
    flex: 0.65;
    grid-template-columns: repeat(3,1fr);
@@ -54,6 +62,7 @@ a:hover{
    display: flex;
    align-items: center;
    justify-content: center;
+   text-decoration: none;
 }
 
 .mail:hover{color: rgba(255, 0, 0, 0.831);}
@@ -66,7 +75,7 @@ a:hover{
 
 
 
-.footer__bottom{
+.footerBottom{
    display: flex;
    height: auto;
    width: 100vw;
@@ -76,18 +85,18 @@ a:hover{
    padding: 10px 0px;
    margin: auto;
 }
-.footer__bottomText{
+.footerBottomText{
    color: #555;
 }
 
 @media screen and (max-width: 800px) {
-   .footer__body{
+   .footerBody{
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: none;
    }
-   .footer__box{
+   .footerBox{
       display: block;
       border-right: none;
       border-bottom: 1px solid #fff;
@@ -96,7 +105,7 @@ a:hover{
    .tagline{
       text-align: center;
    }
-   .footer__links{
+   .footerLinks{
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       padding:  0px 30px 0px 30px;
@@ -106,7 +115,7 @@ a:hover{
       text-decoration: none;
       width: max-content;
    }
-   .footer__bottom{
+   .footerBottom{
       flex-direction: column;
    }
    hr{
@@ -119,8 +128,9 @@ a:hover{
    vr{
       display: none;
    }
-   .footer__bottomText{
+   .footerBottomText{
       margin: 5px;
+      text-align: justify;
    }
    .dev{
       display: flex;

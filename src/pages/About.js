@@ -4,13 +4,13 @@ import "../styles/about.css";
 const About = () => {
   return (
     <section className="about">
-      <div className="about-container">
+      <div className="aboutContainer">
         <h2>About Us</h2>
         <p className="tagline">
           We're more than just developers — we're partners in your growth.
         </p>
 
-        <div className="about-content">
+        <div className="aboutContent">
           <p>
             At <strong>Aditya Tech. & Devoops</strong>, we specialize in building robust, scalable, and beautiful
             digital solutions that empower startups to succeed. From ideation to deployment, we bring ideas

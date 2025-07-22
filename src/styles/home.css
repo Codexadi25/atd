@@ -1,4 +1,5 @@
 .home {
+   width: 100vw;
    text-align: center;
    font-family: 'Segoe UI', sans-serif;
 }
@@ -38,14 +39,13 @@
    text-align: center;
    background-size: cover;
    background-repeat: no-repeat;
-   background-position: 0 100px;
-   padding: 10px 0 150px;
    background-image: url('../assets/images/BG2.svg');
    mask-image: linear-gradient(180deg, #d2d2d2, #000000, #00000000);
 }
 
 .typingContainer {
    display: flex;
+   width: 90vw;
    flex-direction: column;
    align-items: center;
    justify-content: center;
@@ -55,33 +55,3 @@
    position: relative;
    color: #0044aa;
 }
-
-/* HomePage Card */
-.homeCards {
-   display: flex;
-   justify-content: center;
-   position: relative;
-   width: 100vw;
-   overflow: hidden;
-   top: -150px;
-   /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
-   gap: 20px;
-   max-width: 90vw;
-   height: auto;
-   margin: auto;
-}
-/* 
-.card {
-   width: 250px;
-   height: 350px;
-   outline: 1px solid #000;
-}
-.cardTitle{
-   color: #0044aa;
-}
-.cardDescription {
-   width: inherit;
-   text-overflow: wrap;
-   color: rgb(0, 0, 0);
-   font-weight: 200;
-} */
