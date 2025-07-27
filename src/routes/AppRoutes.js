@@ -8,7 +8,7 @@ import Contact from "../pages/Contact.js";
 import Pricing from "../pages/Pricing.js";
 import FAQs from "../pages/FAQs.js";
 import Error from "../pages/Error.js";
-import Products from "../pages/Products.js"
+import Products from "../pages/Productspage.js"
 
 function AppRoutes() {
    return (
