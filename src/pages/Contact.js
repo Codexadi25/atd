@@ -1,56 +1,465 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare, User, Building, AlertCircle, CheckCircle, Loader, Globe, Linkedin } from 'lucide-react';
 import '../styles/Contact.css';
-import emailjs from '@emailjs/browser';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import XIcon from '@mui/icons-material/X';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+// import { sendEmail } from '../utils/sendEmail'; // Uncomment this when you have the utility
 
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    subject: '',
+    priority: 'medium',
+    category: 'general',
+    message: ''
+  });
 
-function Contact() {
-  const form = useRef();
+  const [formStatus, setFormStatus] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+    isError: false,
+    message: ''
+  });
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const [errors, setErrors] = useState({});
 
-    emailjs.sendForm(
-      'service_6ai9cft',          // Service ID
-      'template_2xb90p7',         // Template ID
-      form.current,               // Form ref
-      '1a1enk0G-nfJjaAJ3'         // Public Key from EmailJS
-    )
-    .then((result) => {
-      console.log('✅ Message sent:', result.text);
-      alert('Ticket sent successfully!');
-    })
-    .catch((error) => {
-      console.log('❌ Error:', error.text);
-      alert('Failed to send ticket.');
-    });
+  const priorityOptions = [
+    { value: 'low', label: 'Low', color: 'green' },
+    { value: 'medium', label: 'Medium', color: 'yellow' },
+    { value: 'high', label: 'High', color: 'orange' },
+    { value: 'urgent', label: 'Urgent', color: 'red' }
+  ];
+
+  const categoryOptions = [
+    { value: 'general', label: 'General Inquiry' },
+    { value: 'support', label: 'Technical Support' },
+    { value: 'sales', label: 'Sales & Pricing' },
+    { value: 'partnership', label: 'Partnership' },
+    { value: 'feedback', label: 'Feedback' },
+    { value: 'bug', label: 'Bug Report' }
+  ];
+
+  const contactInfo = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: 'Email Us',
+      details: 'contact@adityatechndevoops.com',
+      subtext: 'We\'ll respond within 24 hours',
+      color: 'blue'
+    },
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: 'Call Us',
+      details: '+91 9876543210',
+      subtext: 'Mon-Fri, 9 AM - 6 PM IST',
+      color: 'green'
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: 'Visit Us',
+      details: 'Kanpur, Uttar Pradesh',
+      subtext: 'India - 208001',
+      color: 'purple'
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: 'Business Hours',
+      details: 'Mon - Fri: 9 AM - 6 PM',
+      subtext: 'Saturday: 10 AM - 4 PM',
+      color: 'orange'
+    }
+  ];
+
+  const socialLinks = [
+    { icon: <Globe className="w-5 h-5" />, url: 'https://adityatechndevoops/web.app/home', label: 'Website' },
+    // { icon: <LinkedInIcon  className="w-5 h-5" />, url: '', label: 'LinkedIn' },
+    { icon: <FacebookIcon className="w-5 h-5" />, url: 'https://.com/adityatechndevoops', label: 'GitHub' },
+    { icon: <InstagramIcon className="w-5 h-5" />, url: 'https:///adityatechndevoops', label: 'GitHub' },
+    { icon: <XIcon className="w-5 h-5" />, url: 'x.com/adityatechndevoops', label: 'Twitter' },
+    { icon: <GitHubIcon className="w-5 h-5" />, url: 'https://github.com/adityatechndevoops', label: 'GitHub' }
+  ];
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    if (formData.message.length < 10) newErrors.message = 'Message must be at least 10 characters';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
-  return (
-    <div className='contactUsPage'>
-      <h2>Contact Us</h2>
-      <form className='form' ref={form} onSubmit={sendEmail}>
-        <TextField id="outlined-basic" type="text" name="name" label="Name" variant="outlined" required />
-        {/* <input type="email" name="email" required /> */}
-        <TextField id="outlined-basic" type="email" name="email" label="Email" variant="outlined" required />
-        <TextField id="outlined-basic" type="text" name="subject" label="Subject Line" variant="outlined"/>
-        <TextField
-            id="outlined-multiline-static"
-            label="Message"
-            multiline
-            rows={4}
-            required
-          />
-          <TextField id="outlined-basic" type="phone" name="phone" label="Contact no." variant="outlined" required />
 
-        <Button type='submit' variant="contained" endIcon={<SendIcon />}>
-          Send
-        </Button>
-      </form>
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const generateTicketId = () => {
+    return 'ATD-' + Date.now().toString().slice(-6) + Math.random().toString(36).substr(2, 3).toUpperCase();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setFormStatus({
+      isSubmitting: true,
+      isSuccess: false,
+      isError: false,
+      message: ''
+    });
+
+    try {
+      const ticketId = generateTicketId();
+      
+      // Prepare email template parameters
+      const templateParams = {
+        ticket_id: ticketId,
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not specified',
+        phone: formData.phone || 'Not provided',
+        subject: formData.subject,
+        priority: formData.priority.toUpperCase(),
+        category: categoryOptions.find(cat => cat.value === formData.category)?.label,
+        message: formData.message,
+        to_email: 'artisahu68802@gmail.com'
+      };
+
+      // Uncomment this when you have the sendEmail utility
+      // await sendEmail(templateParams);
+      
+      // Simulate API call for demo
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: true,
+        isError: false,
+        message: `Ticket ${ticketId} created successfully! We'll get back to you within 24 hours.`
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        subject: '',
+        priority: 'medium',
+        category: 'general',
+        message: ''
+      });
+
+    } catch (error) {
+      setFormStatus({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: 'Failed to send message. Please try again or contact us directly.'
+      });
+    }
+  };
+
+  return (
+    <div className="contact-container">
+      <div className="contact-wrapper">
+        {/* Header */}
+        <div className="contact-header">
+          <div className="header-content">
+            <div className="header-icon">
+              <MessageSquare className="w-8 h-8" />
+            </div>
+            <div className="header-text">
+              <h1 className="main-title">Get In Touch</h1>
+              <p className="brand-subtitle">Aditya Tech & Devoops</p>
+            </div>
+          </div>
+          <p className="header-description">
+            Have a project in mind or need support? We're here to help you succeed. 
+            Reach out to us and let's discuss how we can bring your ideas to life.
+          </p>
+        </div>
+
+        <div className="contact-content">
+          {/* Contact Information */}
+          <div className="contact-info-section">
+            <h2 className="section-title">Contact Information</h2>
+            <div className="contact-info-grid">
+              {contactInfo.map((info, index) => (
+                <div key={index} className={`contact-info-card ${info.color}`}>
+                  <div className="info-icon">
+                    {info.icon}
+                  </div>
+                  <div className="info-content">
+                    <h3 className="info-title">{info.title}</h3>
+                    <p className="info-details">{info.details}</p>
+                    <p className="info-subtext">{info.subtext}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Social Links */}
+            <div className="social-section">
+              <h3 className="social-title">Follow Us</h3>
+              <div className="social-links">
+                {socialLinks.map((social, index) => (
+                  <a 
+                    key={index} 
+                    href={social.url} 
+                    className="social-link"
+                    aria-label={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="contact-form-section">
+            <div className="form-header">
+              <h2 className="section-title">Send us a Message</h2>
+              <p className="form-description">
+                Fill out the form below and we'll get back to you as soon as possible.
+              </p>
+            </div>
+
+            {/* Status Messages */}
+            {formStatus.isSuccess && (
+              <div className="status-message success">
+                <CheckCircle className="w-5 h-5" />
+                <span>{formStatus.message}</span>
+              </div>
+            )}
+
+            {formStatus.isError && (
+              <div className="status-message error">
+                <AlertCircle className="w-5 h-5" />
+                <span>{formStatus.message}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="contact-form">
+              {/* Personal Information */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name" className="form-label">
+                    <User className="w-4 h-4" />
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={`form-input ${errors.name ? 'error' : ''}`}
+                    placeholder="Enter your full name"
+                  />
+                  {errors.name && <span className="error-text">{errors.name}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">
+                    <Mail className="w-4 h-4" />
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={`form-input ${errors.email ? 'error' : ''}`}
+                    placeholder="Enter your email address"
+                  />
+                  {errors.email && <span className="error-text">{errors.email}</span>}
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="company" className="form-label">
+                    <Building className="w-4 h-4" />
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="form-input"
+                    placeholder="Enter your company name"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="phone" className="form-label">
+                    <Phone className="w-4 h-4" />
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="form-input"
+                    placeholder="+91 9876543210"
+                  />
+                </div>
+              </div>
+
+              {/* Ticket Information */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="category" className="form-label">
+                    Category
+                  </label>
+                  <select
+                    id="category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    className="form-select"
+                  >
+                    {categoryOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="priority" className="form-label">
+                    Priority
+                  </label>
+                  <select
+                    id="priority"
+                    name="priority"
+                    value={formData.priority}
+                    onChange={handleInputChange}
+                    className="form-select"
+                  >
+                    {priorityOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className={`priority-indicator ${formData.priority}`}></div>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="subject" className="form-label">
+                  Subject *
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className={`form-input ${errors.subject ? 'error' : ''}`}
+                  placeholder="Brief description of your inquiry"
+                />
+                {errors.subject && <span className="error-text">{errors.subject}</span>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message" className="form-label">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className={`form-textarea ${errors.message ? 'error' : ''}`}
+                  placeholder="Describe your requirements, questions, or issues in detail..."
+                  rows={6}
+                />
+                <div className="textarea-counter">
+                  {formData.message.length}/500 characters
+                </div>
+                {errors.message && <span className="error-text">{errors.message}</span>}
+              </div>
+
+              <button 
+                type="submit" 
+                className="submit-button"
+                disabled={formStatus.isSubmitting}
+              >
+                {formStatus.isSubmitting ? (
+                  <>
+                    <Loader className="w-5 h-5 animate-spin" />
+                    Creating Ticket...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* FAQ Quick Links */}
+        <div className="faq-section">
+          <h3 className="faq-title">Quick Help</h3>
+          <div className="faq-grid">
+            <div className="faq-card">
+              <h4>Response Time</h4>
+              <p>We typically respond to all inquiries within 24 hours during business days.</p>
+            </div>
+            <div className="faq-card">
+              <h4>Project Quotes</h4>
+              <p>For project estimates, please include as much detail as possible about your requirements.</p>
+            </div>
+            <div className="faq-card">
+              <h4>Technical Support</h4>
+              <p>For existing clients, technical support is available during business hours with priority handling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-export default Contact
-
+export default ContactUs;

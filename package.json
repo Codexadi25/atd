@@ -18,6 +18,7 @@
     "emailjs-com": "^3.2.0",
     "firebase": "^11.6.0",
     "framer-motion": "^12.6.3",
+    "lucide-react": "^0.526.0",
     "motion": "^12.6.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -25,12 +26,13 @@
     "react-router-dom": "^7.4.0",
     "react-scripts": "5.0.1",
     "react-typed": "^2.0.12",
+    "sitemap": "^8.0.0",
     "styled-components": "^6.1.16",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "set GENERATE_SOURCEMAP=false && react-scripts start",
+    "build": "set GENERATE_SOURCEMAP=false react-scripts build && javascript-obfuscator build/static/js --output build/static/js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

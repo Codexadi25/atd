@@ -1,19 +1,21 @@
-.about {
-   padding: 0px;
+.about{
+   margin-top: -8px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 90vh;
+   width: 100vw;
    font-family: 'Segoe UI', sans-serif;
    color: #222;
-   /* background-image: url('../assets/images/BG1.svg'); */
-   background-size: cover;
-   height: auto;
+   background-image: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 30%, #e0e7ff 70%, #f3e8ff 100%);
 }
-.aboutContainer {
+.aboutContainer{
    max-width: 900px;
-   margin: auto;
    text-align: center;
 }
  
 .about h2 {
-   font-size: 2.5rem;
+   font-size: 3rem;
    margin-bottom: 10px;
    color: #0075d4;
 }
@@ -51,6 +53,7 @@
 .dark-mode {
    .about{
       color: #fff;
+      background-image: linear-gradient(135deg, #f8fafc2f 0%, #e0f2fe2a 30%, #e0e7ff36 70%, #f3e8ff3a 100%);
    }
    .tagline {
       color: #cbc8c8;

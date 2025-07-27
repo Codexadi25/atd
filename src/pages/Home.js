@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SEO from "../components/SEO.js";
 import { ReactTyped } from "react-typed";
 import CarouselCards from '../components/CarouselCards.js';
+import TechStack from '../components/TechStack.js';
 
 
 function Home() {
@@ -37,6 +38,7 @@ function Home() {
       <div class="homeCards">
         <CarouselCards/>
       </div>
+      <TechStack/>
     </div>
   )
 }

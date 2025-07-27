@@ -1,14 +1,3 @@
-body{
-   background-color: #f8f8f8;
-}
-.errContainer{
-   background-image: blur(8px);
-   background-color: #f8f8f88c;
-   box-shadow: #f8f8f88c 8px 16px 64px ;
-   border-radius: 8px;
-   z-index: 2;
-   padding: 10px;
-}
 .errorPage{
    background-image: url("../assets/images/Basement.jpg");
    background-repeat: no-repeat;
@@ -18,7 +7,16 @@ body{
    align-items: center;
    justify-content: center;
    height: 100vh;
+   width: 100%;
    cursor: none;
+}
+.errContainer{
+   background-image: blur(8px);
+   background-color: #f8f8f88c;
+   box-shadow: #f8f8f88c 8px 16px 64px ;
+   border-radius: 8px;
+   z-index: 2;
+   padding: 10px;
 }
 .errHead {
    font-size: 40px;

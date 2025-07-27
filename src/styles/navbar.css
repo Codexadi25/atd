@@ -150,8 +150,8 @@
       height: 90vh;
       position: absolute;
       flex-direction: column;
-      background-color: #abc4ff21;
-      backdrop-filter: blur(12px);
+      background-color: #ffffff49;
+      backdrop-filter: blur(8px);
       overflow: hidden;
       outline: 1px solid rgb(96, 170, 255);
       border-radius: 8px 0 0 8px;

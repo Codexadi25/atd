@@ -33,14 +33,7 @@ function Footer() {
             <a href='/t&c#intro' className='links'>FAQs</a>
             <a href='/help' className='links'>Help & Support</a>
             <a href='terms-conditions' className='links'>Terms & Conditions</a>
-          </div>
-          <div className='sections social'>
-            <div className='heading'>
-              Social
-            </div>
-            <a href='https://www.instagram.com/adi.dev.aditya' target='__blank' className='links ig'><InstagramIcon/><span className='s-lable'>Instagram</span></a>
-            <a href='https://www.facebook.com/profile.php?id=61556642915726' target='__blank' className='links fb'><FacebookIcon/><span className='s-lable'>Facebook</span></a>
-            <a href='https://wa.me/+917985693955?text=HI!%20I%20want%20to%20know%20more%20about%20Aditya%20Tech.%20%26%20Devoops.' target='__blank' className='links wa'><WhatsAppIcon/><span className='s-lable'>WhatsApp</span></a>
+            <a href="/contact" className='links'>Join our team</a>
           </div>
           <div className='sections'>
             <div className='heading'>
@@ -51,18 +44,23 @@ function Footer() {
             
           </div>
           <div className='sections'>
-            <a href="/contact" className='links'>Join our team</a>
-          </div>
-          <div className='sections dev'>
-            <div className='heading'>Devloper's Contact
-              <a href='https://adityatechndevops.web.app' className='links' target='__blank' >Aditya Tech & Devops&nbsp;<LaunchIcon fontSize='14'/></a></div>
-          </div>
-          <div className='sections'>
             <div className='heading'>
               Businesses
             </div>
             <a href='https://adityatechndevoops.web.app/' className='links' target='__blank'>Aditya Tech. & Devoops.</a>
             <a href='https://adityatechndevoops.web.app/about' className='links' target='__blank'>Royal Grey Enterprises</a> 
+          </div>
+          <div className='sections social'>
+            <div className='heading'>
+              Social
+            </div>
+            <a href='https://www.instagram.com/adi.dev.aditya' target='__blank' className='links ig'><InstagramIcon/><span className='s-lable'>Instagram</span></a>
+            <a href='https://www.facebook.com/profile.php?id=61556642915726' target='__blank' className='links fb'><FacebookIcon/><span className='s-lable'>Facebook</span></a>
+            <a href='https://wa.me/+917985693955?text=HI!%20I%20want%20to%20know%20more%20about%20Aditya%20Tech.%20%26%20Devoops.' target='__blank' className='links wa'><WhatsAppIcon/><span className='s-lable'>WhatsApp</span></a>
+          </div>
+          <div className='sections dev'>
+            <div className='heading'>Devloper's Contact
+              <a href='https://adityatechndevoops.web.app/' className='links' target='__blank' >Aditya Tech & Devops&nbsp;<LaunchIcon fontSize='14'/></a></div>
           </div>
           
         </div>

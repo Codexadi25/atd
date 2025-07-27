@@ -3,12 +3,13 @@ import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 import { Outlet } from "react-router-dom"; 
 import ChatComponent from '../components/ChatWidget.js';
+import "../styles/Layout.css"
 
 function UserLayout({children}) {
   return (
     <div>
       <Navbar />
-      <main style={{ minHeight: "80vh" }}>{children}
+      <main className='mainStyle'>{children}
         <Outlet />
       </main>
       <ChatComponent/>

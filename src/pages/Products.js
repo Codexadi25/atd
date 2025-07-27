@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/Products.css";
-import ErrorComponent from "../component/ErrorComponent.js";
+import ErrorComponent from "../components/ErrorComponent.js";
 
 function Products() {
   return (

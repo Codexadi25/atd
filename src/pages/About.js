@@ -1,9 +1,9 @@
 import React from 'react'
 import "../styles/about.css";
 
-const About = () => {
+function About(){
   return (
-    <section className="about">
+    <div className="about">
       <div className="aboutContainer">
         <h2>About Us</h2>
         <p className="tagline">
@@ -28,7 +28,7 @@ const About = () => {
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

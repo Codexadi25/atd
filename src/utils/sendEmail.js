@@ -1,4 +1,3 @@
-// utils/sendEmail.js
 import emailjs from '@emailjs/browser';
 
 const sendEmail = async (userMessage) => {

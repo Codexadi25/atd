@@ -27,10 +27,15 @@
    height: 125px;
    filter: drop-shadow(1px 1px 1px #fff);
 }
+.footHeroText{
+   display: flex;
+   flex-direction: column;
+   width: 450px;
+   align-items: center;
+}
 .footHeroText > .tagline{
    color: #dddd;
    width: fit-content;
-   text-align: left;
 }
 hr{
    width: 95vw;
@@ -89,7 +94,7 @@ a:hover{
    color: #555;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
    .footerBody{
       flex-direction: column;
       align-items: center;
@@ -101,6 +106,9 @@ a:hover{
       border-right: none;
       border-bottom: 1px solid #fff;
       margin-bottom: 20px;
+   }
+   .footHeroText{
+      width:max-content;
    }
    .tagline{
       text-align: center;
@@ -129,7 +137,7 @@ a:hover{
       display: none;
    }
    .footerBottomText{
-      margin: 5px;
+      margin: 12px;
       text-align: justify;
    }
    .dev{
@@ -139,7 +147,8 @@ a:hover{
    }
    .social{
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      gap: 8px;
       align-items: center;
       justify-content: space-evenly;
    }
