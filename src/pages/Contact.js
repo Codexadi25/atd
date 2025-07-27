@@ -79,8 +79,8 @@ const ContactUs = () => {
   const socialLinks = [
     { icon: <Globe className="w-5 h-5" />, url: 'https://adityatechndevoops/web.app/home', label: 'Website' },
     // { icon: <LinkedInIcon  className="w-5 h-5" />, url: '', label: 'LinkedIn' },
-    { icon: <FacebookIcon className="w-5 h-5" />, url: 'https://.com/adityatechndevoops', label: 'GitHub' },
-    { icon: <InstagramIcon className="w-5 h-5" />, url: 'https:///adityatechndevoops', label: 'GitHub' },
+    { icon: <FacebookIcon className="w-5 h-5" />, url: 'https://www.facebook.com/profile.php?id=61556642915726', label: 'GitHub' },
+    { icon: <InstagramIcon className="w-5 h-5" />, url: 'https://www.instagram.com/adi.dev.aditya/', label: 'GitHub' },
     { icon: <XIcon className="w-5 h-5" />, url: 'x.com/adityatechndevoops', label: 'Twitter' },
     { icon: <GitHubIcon className="w-5 h-5" />, url: 'https://github.com/adityatechndevoops', label: 'GitHub' }
   ];
