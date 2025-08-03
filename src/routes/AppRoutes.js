@@ -8,7 +8,8 @@ import Contact from "../pages/Contact.js";
 import Pricing from "../pages/Pricing.js";
 import FAQs from "../pages/FAQs.js";
 import Error from "../pages/Error.js";
-import Products from "../pages/Productspage.js"
+// import ProductsPage from '../pages/ProductsPage.js';
+
 
 function AppRoutes() {
    return (
@@ -22,7 +23,8 @@ function AppRoutes() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/faqs" element={<FAQs />} />
                   <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/products" element={<Products/>} />
+                  {/* <Route path="/products" element={<ProductsPage/>} /> */}
+                  <Route path="/products" element={<Error/>} />
                </Route>
                <Route path="*" element={<UserLayout />} > 
                   <Route path="*" element={<Error/>} />

@@ -1,279 +1,16 @@
-/* ProductsPage.css */
-
-.products-page {
+.products__page {
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
   min-height: 100vh;
   color: white;
   overflow-x: hidden;
 }
 
-/* Navigation Styles */
-.navbar {
-  background: rgba(15, 15, 35, 0.95) !important;
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.products__main-container {
+  padding: 2rem 0 !important;
 }
 
-.logo {
-  font-weight: 700 !important;
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-/* Hero Section */
-.hero-section {
-  padding: 150px 0 100px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(ellipse at center, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-title {
-  font-size: 4rem !important;
-  font-weight: 800 !important;
-  margin-bottom: 1.5rem !important;
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1, #96CEB4) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  animation: gradientShift 4s ease-in-out infinite;
-}
-
-.hero-subtitle {
-  opacity: 0.9 !important;
-  line-height: 1.6 !important;
-  max-width: 800px;
-  margin: 0 auto !important;
-}
-
-/* Tabs Container */
-.tabs-container {
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 20px !important;
-  overflow: hidden;
-}
-
-.category-tabs .MuiTab-root {
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-weight: 500 !important;
-  text-transform: none !important;
-  font-size: 1rem !important;
-  padding: 1rem 2rem !important;
-  transition: all 0.3s ease !important;
-}
-
-.category-tabs .MuiTab-root:hover {
-  color: #4ECDC4 !important;
-  background: rgba(78, 205, 196, 0.1);
-}
-
-.category-tabs .Mui-selected {
-  color: #4ECDC4 !important;
-  background: rgba(78, 205, 196, 0.1) !important;
-}
-
-.category-tabs .MuiTabs-indicator {
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
-  height: 3px !important;
-  border-radius: 2px;
-}
-
-/* Product Cards */
-.product-card {
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 20px !important;
-  transition: all 0.4s ease !important;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(78, 205, 196, 0.2) !important;
-  border-color: rgba(78, 205, 196, 0.3);
-}
-
-.product-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.05), transparent);
-  transition: left 0.8s ease;
-  z-index: 1;
-}
-
-.product-card:hover::before {
-  left: 100%;
-}
-
-/* Product Image Container */
-.product-image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.product-image {
-  transition: all 0.3s ease;
-}
-
-.product-icon {
-  font-size: 4rem !important;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
-}
-
-.product-card:hover .product-icon {
-  transform: scale(1.2) rotate(5deg);
-  color: #4ECDC4;
-}
-
-.product-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.product-card:hover .product-overlay {
-  opacity: 1;
-}
-
-/* Product Content */
-.product-title {
-  font-weight: 600 !important;
-  color: #4ECDC4 !important;
-  margin-bottom: 0.5rem !important;
-}
-
-.product-description {
-  line-height: 1.6 !important;
-  flex-grow: 1;
-}
-
-.product-price {
-  font-weight: 700 !important;
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-/* Call to Action Section */
-.cta-section {
-  background: rgba(255, 255, 255, 0.02);
-  padding: 100px 0;
-  position: relative;
-  text-align: center;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(ellipse at center, rgba(78, 205, 196, 0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.cta-title {
-  font-weight: 700 !important;
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  margin-bottom: 1rem !important;
-}
-
-.cta-button {
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
-  border: none !important;
-  padding: 12px 30px !important;
-  font-weight: 600 !important;
-  text-transform: none !important;
-  border-radius: 25px !important;
-  transition: all 0.3s ease !important;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3) !important;
-}
-
-/* Product Dialog */
-.product-dialog .MuiDialog-paper {
-  background: rgba(15, 15, 35, 0.95) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px !important;
-  color: white !important;
-}
-
-.product-dialog .MuiDialogTitle-root {
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.product-dialog .MuiChip-root {
-  background: rgba(78, 205, 196, 0.2) !important;
-  color: #4ECDC4 !important;
-  border-color: rgba(78, 205, 196, 0.3) !important;
-}
-
-.product-dialog .MuiChip-outlined {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* Chip Animations */
-.MuiChip-root {
-  transition: all 0.3s ease !important;
-}
-
-.MuiChip-root:hover {
-  transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
-}
-
-/* Button Styles */
-.MuiButton-contained {
+/* Global button styles for products */
+.products__page .MuiButton-contained {
   background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
   border: none !important;
   border-radius: 10px !important;
@@ -282,12 +19,12 @@
   transition: all 0.3s ease !important;
 }
 
-.MuiButton-contained:hover {
+.products__page .MuiButton-contained:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3) !important;
 }
 
-.MuiButton-outlined {
+.products__page .MuiButton-outlined {
   border-color: rgba(255, 255, 255, 0.3) !important;
   color: rgba(255, 255, 255, 0.8) !important;
   border-radius: 10px !important;
@@ -296,108 +33,21 @@
   transition: all 0.3s ease !important;
 }
 
-.MuiButton-outlined:hover {
+.products__page .MuiButton-outlined:hover {
   border-color: #4ECDC4 !important;
   color: #4ECDC4 !important;
   background: rgba(78, 205, 196, 0.1) !important;
   transform: translateY(-1px);
 }
 
-/* Loading Animation */
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+/* Global chip styles for products */
+.products__page .MuiChip-root {
+  transition: all 0.3s ease !important;
 }
 
-/* Card Content Animation */
-.product-card .MuiCardContent-root {
-  position: relative;
-  z-index: 2;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card .MuiCardActions-root {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-}
-
-/* Hover Effects for Lists */
-.product-card ul li {
-  transition: all 0.2s ease;
-  padding: 2px 0;
-}
-
-.product-card:hover ul li {
-  color: rgba(255, 255, 255, 0.9);
-  transform: translateX(5px);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem !important;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.2rem !important;
-  }
-  
-  .category-tabs .MuiTab-root {
-    padding: 0.8rem 1rem !important;
-    font-size: 0.9rem !important;
-  }
-  
-  .product-card {
-    margin-bottom: 1rem;
-  }
-  
-  .cta-title {
-    font-size: 2rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem !important;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem !important;
-  }
-  
-  .category-tabs .MuiTab-root {
-    padding: 0.6rem 0.5rem !important;
-    font-size: 0.8rem !important;
-    min-width: auto !important;
-  }
-  
-  .product-icon {
-    font-size: 3rem !important;
-  }
-  
-  .cta-section {
-    padding: 60px 0;
-  }
-  
-  .cta-title {
-    font-size: 1.8rem !important;
-  }
-}
-
-/* Additional Enhancements */
-.product-card .MuiTypography-h6 {
-  transition: all 0.3s ease;
-}
-
-.product-card:hover .MuiTypography-h6 {
-  text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+.products__page .MuiChip-root:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
 }
 
 /* Smooth scrolling */
@@ -421,4 +71,29 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(45deg, #45B7D1, #4ECDC4);
+}
+
+/* Container spacing adjustments */
+.products__page .MuiContainer-root {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .products__main-container {
+    padding: 1rem 0 !important;
+  }
+  
+  .products__page .MuiContainer-root {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .products__page .MuiContainer-root {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
 }

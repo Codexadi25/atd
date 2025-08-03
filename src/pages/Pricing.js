@@ -9,7 +9,8 @@ const Pricings = () => {
     {
       id: 'starter',
       name: 'Starter',
-      price: '₹29,999',
+      monthly: '₹599',
+      price: '₹14,376',
       period: '/project',
       description: 'Perfect for small businesses and startups',
       popular: false,

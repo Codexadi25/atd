@@ -1,0 +1,198 @@
+.products__card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  transition: all 0.4s ease !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.products__card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(78, 205, 196, 0.2) !important;
+  border-color: rgba(78, 205, 196, 0.3);
+}
+
+.products__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.05), transparent);
+  transition: left 0.8s ease;
+  z-index: 1;
+}
+
+.products__card:hover::before {
+  left: 100%;
+}
+
+/* Product Image Container */
+.products__card-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.products__card-image {
+  transition: all 0.3s ease;
+}
+
+.products__card-icon {
+  font-size: 4rem !important;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.products__card:hover .products__card-icon {
+  transform: scale(1.2) rotate(5deg);
+  color: #4ECDC4;
+}
+
+.products__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.products__card:hover .products__card-overlay {
+  opacity: 1;
+}
+
+/* Product Content */
+.products__card-title {
+  font-weight: 600 !important;
+  color: #4ECDC4 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.products__card-description {
+  line-height: 1.6 !important;
+  flex-grow: 1;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.products__card-price {
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.products__card-chip {
+  background: rgba(78, 205, 196, 0.2) !important;
+  color: #4ECDC4 !important;
+  border-color: rgba(78, 205, 196, 0.3) !important;
+}
+
+.products__tech-chip {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+}
+
+.products__tech-chip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
+  border-color: #4ECDC4 !important;
+  color: #4ECDC4 !important;
+}
+
+.products__features-list {
+  padding-left: 1rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.products__features-list li {
+  transition: all 0.2s ease;
+  padding: 2px 0;
+}
+
+.products__card:hover .products__features-list li {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px);
+}
+
+/* Button Styles */
+.products__preview-btn {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 10px !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.products__preview-btn:hover {
+  border-color: #4ECDC4 !important;
+  color: #4ECDC4 !important;
+  background: rgba(78, 205, 196, 0.1) !important;
+  transform: translateY(-1px);
+}
+
+.products__request-btn {
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.products__request-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3) !important;
+}
+
+/* Card Content Animation */
+.products__card .MuiCardContent-root {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.products__card .MuiCardActions-root {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+
+/* Additional Enhancements */
+.products__card .MuiTypography-h6 {
+  transition: all 0.3s ease;
+}
+
+.products__card:hover .MuiTypography-h6 {
+  text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .products__card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products__card-icon {
+    font-size: 3rem !important;
+  }
+}

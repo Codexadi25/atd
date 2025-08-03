@@ -1,0 +1,48 @@
+.products__tabs-container {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+}
+
+.products__category-tabs .MuiTab-root {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+  padding: 1rem 2rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.products__category-tabs .MuiTab-root:hover {
+  color: #4ECDC4 !important;
+  background: rgba(78, 205, 196, 0.1);
+}
+
+.products__category-tabs .Mui-selected {
+  color: #4ECDC4 !important;
+  background: rgba(78, 205, 196, 0.1) !important;
+}
+
+.products__category-tabs .MuiTabs-indicator {
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  height: 3px !important;
+  border-radius: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .products__category-tabs .MuiTab-root {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .products__category-tabs .MuiTab-root {
+    padding: 0.6rem 0.5rem !important;
+    font-size: 0.8rem !important;
+    min-width: auto !important;
+  }
+}

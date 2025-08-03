@@ -1,0 +1,76 @@
+.products__grid-container {
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+/* Grid spacing adjustments */
+.products__grid-container .MuiGrid-container {
+  margin: 0;
+  width: 100%;
+}
+
+.products__grid-container .MuiGrid-item {
+  padding: 1rem;
+}
+
+/* Animation for grid items */
+.products__grid-container .MuiGrid-item {
+  animation: products__fadeInUp 0.6s ease-out forwards;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.products__grid-container .MuiGrid-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes products__fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .products__grid-container {
+    padding: 0 0.5rem;
+  }
+  
+  .products__grid-container .MuiGrid-item {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products__grid-container {
+    margin-top: 2rem;
+    padding: 0;
+  }
+  
+  .products__grid-container .MuiGrid-item {
+    padding: 0.25rem;
+  }
+}

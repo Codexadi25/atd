@@ -1,0 +1,121 @@
+.products__cta-section {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 100px 0;
+  position: relative;
+  text-align: center;
+}
+
+.products__cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(78, 205, 196, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.products__cta-title {
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: 1rem !important;
+}
+
+.products__cta-subtitle {
+  margin-bottom: 2.5rem !important;
+  opacity: 0.9 !important;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.products__cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.products__cta-button-primary {
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 25px !important;
+  transition: all 0.3s ease !important;
+  color: white !important;
+}
+
+.products__cta-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3) !important;
+}
+
+.products__cta-button-secondary {
+  color: white !important;
+  border-color: white !important;
+  padding: 12px 30px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 25px !important;
+  transition: all 0.3s ease !important;
+}
+
+.products__cta-button-secondary:hover {
+  border-color: #4ECDC4 !important;
+  color: #4ECDC4 !important;
+  background: rgba(78, 205, 196, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .products__cta-section {
+    padding: 80px 0;
+  }
+  
+  .products__cta-title {
+    font-size: 2rem !important;
+  }
+  
+  .products__cta-subtitle {
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .products__cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .products__cta-button-primary,
+  .products__cta-button-secondary {
+    width: 280px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .products__cta-section {
+    padding: 60px 0;
+  }
+  
+  .products__cta-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .products__cta-subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .products__cta-button-primary,
+  .products__cta-button-secondary {
+    width: 250px;
+    padding: 10px 20px !important;
+  }
+}
