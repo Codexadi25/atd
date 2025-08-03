@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.050c1245.css",
+    "main.js": "/static/js/main.42a21a73.js",
+    "static/js/206.1f80f404.chunk.js": "/static/js/206.1f80f404.chunk.js",
+    "static/media/Basement.jpg": "/static/media/Basement.de250686512dc8d42d34.jpg",
+    "static/media/Jenkins.png": "/static/media/Jenkins.33191694fff121770692.png",
+    "static/media/Python.png": "/static/media/Python.d8b377f05522bf35de36.png",
+    "static/media/Cloudflare.png": "/static/media/Cloudflare.2d554c6fa968f2ca0786.png",
+    "static/media/aws.png": "/static/media/aws.f88b0ed595ad50cbb4ef.png",
+    "static/media/gCloud.png": "/static/media/gCloud.619b69091b728bba00b9.png",
+    "static/media/MongoDB.png": "/static/media/MongoDB.c20e1bc7e958c8db307f.png",
+    "static/media/kotlin.png": "/static/media/kotlin.192a82811b73ac41a1cb.png",
+    "static/media/FirebaseIcon.png": "/static/media/FirebaseIcon.586a6255805307c2c347.png",
+    "static/media/ReactJs.png": "/static/media/ReactJs.20adfb35ae6a6e5817bf.png",
+    "static/media/AdityaTechNDevoopsICON.png": "/static/media/AdityaTechNDevoopsICON.62473ab86f2215490426.png",
+    "static/media/Redux.png": "/static/media/Redux.1edba70acbe0a2484e24.png",
+    "static/media/PostgreSQL.png": "/static/media/PostgreSQL.6c5d698f195dac2fe5af.png",
+    "index.html": "/index.html",
+    "static/media/Kubernetes.png": "/static/media/Kubernetes.f568a0a722cbf5db0d70.png",
+    "static/media/NodeJs.png": "/static/media/NodeJs.c580880cda32187e07e1.png",
+    "static/media/VueJs.png": "/static/media/VueJs.b9514adc255abb8f0638.png",
+    "static/media/TypeScript.png": "/static/media/TypeScript.bb13ebd9561a6ee645c2.png",
+    "static/media/expressJs.png": "/static/media/expressJs.3f6d752193b41a28270a.png",
+    "static/media/Flutter.png": "/static/media/Flutter.9f23bcd7d934a0c55e6b.png",
+    "static/media/githubActions.png": "/static/media/githubActions.64e2a829e0f31d5fa9c3.png",
+    "static/media/BG2.svg": "/static/media/BG2.3577aafd7f74bbd63dc4.svg"
+  },
+  "entrypoints": [
+    "static/css/main.050c1245.css",
+    "static/js/main.42a21a73.js"
+  ]
+}

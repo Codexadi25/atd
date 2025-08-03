@@ -1,0 +1,9 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Sitemap for Google Search Console
+Sitemap: https://adityatechndevoops.web.app/sitemap.xml
+
+# Disallow Firebase internal paths (optional but clean)
+Disallow: /__/ 
