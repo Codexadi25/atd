@@ -1,0 +1,308 @@
+/* CategoryFilter.css - Category filter component styles */
+.category-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+}
+
+/* Dropdown Filter (Desktop) */
+.filter-dropdown {
+  position: relative;
+  display: block;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2d3748;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-dropdown.open .filter-button {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.selected-category {
+  truncate: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dropdown-icon {
+  transition: transform 0.2s ease;
+  color: #64748b;
+}
+
+.dropdown-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.filter-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0;
+  list-style: none;
+  animation: slideDown 0.2s ease-out;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.filter-option:hover {
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.filter-option.selected {
+  background: #667eea;
+  color: white;
+  font-weight: 600;
+}
+
+.filter-option.selected:hover {
+  background: #5a67d8;
+}
+
+.option-text {
+  flex: 1;
+}
+
+.check-icon {
+  color: currentColor;
+  opacity: 0.9;
+}
+
+/* Mobile Filter Chips */
+.mobile-filter-chips {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.filter-chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: #cbd5e0;
+  color: #4a5568;
+}
+
+.filter-chip.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Click outside to close */
+.filter-dropdown.open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: transparent;
+}
+
+/* Scrollbar styling for filter options */
+.filter-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-options::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Focus styles for accessibility */
+.filter-button:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.filter-option:focus {
+  outline: 2px solid #667eea;
+  outline-offset: -2px;
+}
+
+.filter-chip:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .category-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-dropdown {
+    display: none;
+  }
+  
+  .mobile-filter-chips {
+    display: flex;
+  }
+  
+  .filter-label {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-chip {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .mobile-filter-chips {
+    justify-content: center;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .filter-label {
+    color: #e2e8f0;
+  }
+  
+  .filter-button {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .filter-button:hover {
+    border-color: #718096;
+  }
+  
+  .filter-dropdown.open .filter-button {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  }
+  
+  .filter-options {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .filter-option {
+    color: #e2e8f0;
+  }
+  
+  .filter-option:hover {
+    background: #4a5568;
+    color: #f7fafc;
+  }
+  
+  .filter-chip {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #a0aec0;
+  }
+  
+  .filter-chip:hover {
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  .filter-chip.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+  }
+  
+  .filter-options::-webkit-scrollbar-track {
+    background: #4a5568;
+  }
+  
+  .filter-options::-webkit-scrollbar-thumb {
+    background: #718096;
+  }
+  
+  .filter-options::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+  }
+}

@@ -32,7 +32,7 @@ function Home() {
               loop
             />
           </h1>
-          <Link to="/services"><button className="button home-btn">Get Started</button></Link>
+          <Link to="/pricing"><button className="button home-btn">Get Started</button></Link>
         </div>
       </div>
       <div class="homeCards">

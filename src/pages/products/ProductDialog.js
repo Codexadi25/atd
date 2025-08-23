@@ -52,12 +52,13 @@ const ProductDialog = ({ open, product, onClose, onRequestProduct }) => {
             className="products__dialog-preview"
             style={{
               height: '250px',
-              background: `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}20)`,
-              borderRadius: '8px',
+              background: 'linear-gradient(135deg, rgba(0, 51, 170, 0.1), rgba(0, 76, 255, 0.1))',
+              borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              marginBottom: '1.5rem'
+              marginBottom: '1.5rem',
+              border: '1px solid rgba(0, 51, 170, 0.1)'
             }}
           >
             <div className="products__dialog-large-icon">

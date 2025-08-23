@@ -2,12 +2,10 @@
 
 import emailjs from '@emailjs/browser';
 
-// You'll need to create a separate EmailJS service/template for customer confirmations
-// Or create a new template in your existing service
 const CONFIRMATION_CONFIG = {
-  serviceId: 'service_6ai9cft',           // Same service ID
-  templateId: 'template_confirmation',     // New template for customer confirmations
-  publicKey: '1a1enk0G-nfJjaAJ3'          // Same public key
+  serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_b9ecwpr',
+  templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_confirmation',
+  publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '1a1enk0G-nfJjaAJ3'
 };
 
 /**

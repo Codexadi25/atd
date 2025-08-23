@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "set GENERATE_SOURCEMAP=false && react-scripts start",
-    "build": "set GENERATE_SOURCEMAP=false react-scripts build && javascript-obfuscator build/static/js --output build/static/js",
+    "build": "set GENERATE_SOURCEMAP=false react-scripts build",
+    "obfus": "set GENERATE_SOURCEMAP=false react-scripts build && javascript-obfuscator build/static/js --output build/static/js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -30,6 +31,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@google/generative-ai": "^0.24.1",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
     "@mui/styled-engine-sc": "^7.0.0",
@@ -47,8 +49,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.4.0",
     "react-scripts": "5.0.1",
+    "react-syntax-highlighter": "^15.6.3",
     "react-typed": "^2.0.12",
     "sitemap": "^8.0.0",
     "styled-components": "^6.1.16",

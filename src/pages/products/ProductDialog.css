@@ -1,15 +1,16 @@
 .products__dialog .MuiDialog-paper {
-  background: rgba(15, 15, 35, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 51, 170, 0.1) !important;
   border-radius: 20px !important;
-  color: white !important;
+  color: #1e293b !important;
   max-height: 90vh;
+  box-shadow: 0 20px 60px rgba(0, 51, 170, 0.15) !important;
 }
 
 .products__dialog-title {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 51, 170, 0.05) !important;
+  border-bottom: 1px solid rgba(0, 51, 170, 0.1) !important;
   padding: 1.5rem !important;
 }
 
@@ -21,24 +22,25 @@
 
 .products__dialog-icon {
   font-size: 2.5rem;
-  color: #4ECDC4;
+  color: #0033aa !important;
 }
 
 .products__dialog-product-title {
-  color: white !important;
-  font-weight: 600 !important;
+  color: #0033aa !important;
+  font-weight: 700 !important;
   margin-bottom: 0.5rem !important;
 }
 
 .products__dialog-chip {
-  background: rgba(78, 205, 196, 0.2) !important;
-  color: #4ECDC4 !important;
-  border-color: rgba(78, 205, 196, 0.3) !important;
+  background: rgba(0, 51, 170, 0.1) !important;
+  color: #0033aa !important;
+  border-color: rgba(0, 51, 170, 0.2) !important;
+  font-weight: 600 !important;
 }
 
 .products__dialog-content {
   padding: 1.5rem !important;
-  color: white !important;
+  color: #374151 !important;
 }
 
 .products__dialog-preview {
@@ -48,20 +50,21 @@
 
 .products__dialog-large-icon {
   font-size: 5rem;
-  color: rgba(255, 255, 255, 0.7);
-  opacity: 0.7;
+  color: #0033aa !important;
+  opacity: 0.8;
   transition: all 0.3s ease;
 }
 
 .products__dialog-preview:hover .products__dialog-large-icon {
   transform: scale(1.1);
-  color: #4ECDC4;
+  color: #004cff !important;
 }
 
 .products__dialog-description {
   margin-bottom: 1.5rem !important;
   line-height: 1.6 !important;
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #475569 !important;
+  font-weight: 400 !important;
 }
 
 .products__dialog-details {
@@ -69,7 +72,7 @@
 }
 
 .products__dialog-section-title {
-  color: #4ECDC4 !important;
+  color: #0033aa !important;
   font-weight: 600 !important;
   margin-bottom: 1rem !important;
 }
@@ -82,28 +85,31 @@
 }
 
 .products__dialog-tech-chip {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 51, 170, 0.2) !important;
+  color: #374151 !important;
+  background: rgba(0, 51, 170, 0.05) !important;
   transition: all 0.3s ease !important;
+  font-weight: 500 !important;
 }
 
 .products__dialog-tech-chip:hover {
-  border-color: #4ECDC4 !important;
-  color: #4ECDC4 !important;
-  background: rgba(78, 205, 196, 0.1) !important;
+  border-color: #0033aa !important;
+  color: #0033aa !important;
+  background: rgba(0, 51, 170, 0.1) !important;
   transform: scale(1.05);
 }
 
 .products__dialog-features {
   padding-left: 1rem;
   margin: 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: #4b5563 !important;
 }
 
 .products__dialog-feature-item {
   margin-bottom: 0.5rem !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #4b5563 !important;
   line-height: 1.4 !important;
+  font-weight: 400 !important;
 }
 
 .products__dialog-features li {
@@ -112,61 +118,188 @@
 }
 
 .products__dialog-features li:hover {
-  color: rgba(255, 255, 255, 1);
+  color: #1f2937 !important;
   transform: translateX(5px);
 }
 
 .products__dialog-pricing {
   margin-top: 1.5rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 51, 170, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 51, 170, 0.1);
 }
 
 .products__dialog-price-title {
-  color: #4ECDC4 !important;
+  color: #0033aa !important;
   font-weight: 700 !important;
   margin-bottom: 0.5rem !important;
+  background: linear-gradient(45deg, #0033aa, #004cff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
 .products__dialog-price-note {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #64748b !important;
   font-style: italic;
+  font-weight: 400 !important;
 }
 
 .products__dialog-actions {
   padding: 1.5rem !important;
-  background: rgba(255, 255, 255, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 51, 170, 0.02);
+  border-top: 1px solid rgba(0, 51, 170, 0.1);
 }
 
 .products__dialog-close-btn {
-  color: rgba(255, 255, 255, 0.8) !important;
-  border-radius: 10px !important;
+  color: #0033aa !important;
+  border-color: rgba(0, 51, 170, 0.3) !important;
+  border-radius: 12px !important;
   text-transform: none !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   transition: all 0.3s ease !important;
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 
 .products__dialog-close-btn:hover {
-  color: white !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  color: #004cff !important;
+  background: rgba(0, 51, 170, 0.05) !important;
+  border-color: #004cff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 51, 170, 0.15) !important;
 }
 
 .products__dialog-request-btn {
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  background: linear-gradient(45deg, #0033aa, #004cff) !important;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   text-transform: none !important;
   font-weight: 600 !important;
   transition: all 0.3s ease !important;
   color: white !important;
+  box-shadow: 0 4px 15px rgba(0, 51, 170, 0.2) !important;
 }
 
 .products__dialog-request-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(0, 51, 170, 0.3) !important;
+  background: linear-gradient(45deg, #004cff, #0033aa) !important;
+}
+
+/* Dark Mode Styles */
+.dark-mode .products__dialog .MuiDialog-paper {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(0, 51, 170, 0.2) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark-mode .products__dialog-title {
+  background: rgba(0, 51, 170, 0.1) !important;
+  border-bottom: 1px solid rgba(0, 51, 170, 0.2) !important;
+}
+
+.dark-mode .products__dialog-icon {
+  color: #00bcd4 !important;
+}
+
+.dark-mode .products__dialog-product-title {
+  color: #00bcd4 !important;
+}
+
+.dark-mode .products__dialog-chip {
+  background: rgba(0, 188, 212, 0.2) !important;
+  color: #00bcd4 !important;
+  border-color: rgba(0, 188, 212, 0.3) !important;
+}
+
+.dark-mode .products__dialog-content {
+  color: #cbd5e1 !important;
+}
+
+.dark-mode .products__dialog-large-icon {
+  color: #00bcd4 !important;
+}
+
+.dark-mode .products__dialog-preview:hover .products__dialog-large-icon {
+  color: #4ac8de !important;
+}
+
+.dark-mode .products__dialog-description {
+  color: #94a3b8 !important;
+}
+
+.dark-mode .products__dialog-section-title {
+  color: #00bcd4 !important;
+}
+
+.dark-mode .products__dialog-tech-chip {
+  border-color: rgba(0, 188, 212, 0.3) !important;
+  color: #cbd5e1 !important;
+  background: rgba(0, 188, 212, 0.1) !important;
+}
+
+.dark-mode .products__dialog-tech-chip:hover {
+  border-color: #00bcd4 !important;
+  color: #00bcd4 !important;
+  background: rgba(0, 188, 212, 0.2) !important;
+}
+
+.dark-mode .products__dialog-features {
+  color: #94a3b8 !important;
+}
+
+.dark-mode .products__dialog-feature-item {
+  color: #94a3b8 !important;
+}
+
+.dark-mode .products__dialog-features li:hover {
+  color: #f1f5f9 !important;
+}
+
+.dark-mode .products__dialog-pricing {
+  background: rgba(0, 51, 170, 0.1);
+  border: 1px solid rgba(0, 51, 170, 0.2);
+}
+
+.dark-mode .products__dialog-price-title {
+  color: #00bcd4 !important;
+  background: linear-gradient(45deg, #00bcd4, #4ac8de) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.dark-mode .products__dialog-price-note {
+  color: #64748b !important;
+}
+
+.dark-mode .products__dialog-actions {
+  background: rgba(0, 51, 170, 0.05);
+  border-top: 1px solid rgba(0, 51, 170, 0.2);
+}
+
+.dark-mode .products__dialog-close-btn {
+  color: #00bcd4 !important;
+  border-color: rgba(0, 188, 212, 0.3) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+}
+
+.dark-mode .products__dialog-close-btn:hover {
+  color: #4ac8de !important;
+  background: rgba(0, 188, 212, 0.1) !important;
+  border-color: #4ac8de !important;
+}
+
+.dark-mode .products__dialog-request-btn {
+  background: linear-gradient(45deg, #00bcd4, #4ac8de) !important;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3) !important;
+}
+
+.dark-mode .products__dialog-request-btn:hover {
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4) !important;
+  background: linear-gradient(45deg, #4ac8de, #00bcd4) !important;
 }
 
 /* Mobile Responsive */

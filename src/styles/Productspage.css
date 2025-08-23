@@ -1,53 +1,77 @@
 .products__page {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%);
   min-height: 100vh;
-  color: white;
+  color: #1e293b;
   overflow-x: hidden;
+  position: relative;
+}
+
+.products__page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 51, 170, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 76, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 188, 212, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .products__main-container {
   padding: 2rem 0 !important;
+  position: relative;
+  z-index: 2;
 }
 
 /* Global button styles for products */
 .products__page .MuiButton-contained {
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1) !important;
+  background: linear-gradient(45deg, #0033aa, #004cff) !important;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   text-transform: none !important;
   font-weight: 600 !important;
   transition: all 0.3s ease !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 51, 170, 0.2) !important;
 }
 
 .products__page .MuiButton-contained:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(0, 51, 170, 0.3) !important;
+  background: linear-gradient(45deg, #004cff, #0033aa) !important;
 }
 
 .products__page .MuiButton-outlined {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  border-radius: 10px !important;
+  border-color: rgba(0, 51, 170, 0.3) !important;
+  color: #0033aa !important;
+  border-radius: 12px !important;
   text-transform: none !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   transition: all 0.3s ease !important;
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 
 .products__page .MuiButton-outlined:hover {
-  border-color: #4ECDC4 !important;
-  color: #4ECDC4 !important;
-  background: rgba(78, 205, 196, 0.1) !important;
+  border-color: #004cff !important;
+  color: #004cff !important;
+  background: rgba(0, 51, 170, 0.05) !important;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 51, 170, 0.15) !important;
 }
 
 /* Global chip styles for products */
 .products__page .MuiChip-root {
   transition: all 0.3s ease !important;
+  font-weight: 500 !important;
 }
 
 .products__page .MuiChip-root:hover {
   transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 51, 170, 0.2);
 }
 
 /* Smooth scrolling */
@@ -61,22 +85,118 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 51, 170, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #4ECDC4, #45B7D1);
+  background: linear-gradient(45deg, #0033aa, #004cff);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #45B7D1, #4ECDC4);
+  background: linear-gradient(45deg, #004cff, #0033aa);
 }
 
 /* Container spacing adjustments */
 .products__page .MuiContainer-root {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography improvements */
+.products__page .MuiTypography-h1,
+.products__page .MuiTypography-h2,
+.products__page .MuiTypography-h3,
+.products__page .MuiTypography-h4,
+.products__page .MuiTypography-h5,
+.products__page .MuiTypography-h6 {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+}
+
+.products__page .MuiTypography-body1,
+.products__page .MuiTypography-body2 {
+  color: #475569 !important;
+  font-weight: 400 !important;
+}
+
+/* Ensure proper z-index for all components */
+.products__page .MuiPaper-root {
+  position: relative;
+  z-index: 2;
+}
+
+.products__page .MuiCard-root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark Mode Styles */
+.dark-mode .products__page {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+  color: #f1f5f9;
+}
+
+.dark-mode .products__page::before {
+  background: 
+    radial-gradient(circle at 20% 80%, #0091d41a 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, #4a59de1a 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, #6c00aa0d 0%, transparent 50%);
+}
+
+.dark-mode .products__page .MuiButton-contained {
+  background: linear-gradient(45deg, #0086d4, #4a4cde) !important;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3) !important;
+}
+
+.dark-mode .products__page .MuiButton-contained:hover {
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4) !important;
+  background: linear-gradient(45deg, #4a4cde, #0086d4) !important;
+}
+
+.dark-mode .products__page .MuiButton-outlined {
+  border-color: rgba(0, 188, 212, 0.3) !important;
+  color: #0086d4 !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+}
+
+.dark-mode .products__page .MuiButton-outlined:hover {
+  border-color: #4a4cde !important;
+  color: #4a4cde !important;
+  background: rgba(0, 188, 212, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2) !important;
+}
+
+.dark-mode .products__page .MuiChip-root:hover {
+  box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: rgba(0, 188, 212, 0.1);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #0086d4, #4a4cde);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #4a4cde, #0086d4);
+}
+
+.dark-mode .products__page .MuiTypography-h1,
+.dark-mode .products__page .MuiTypography-h2,
+.dark-mode .products__page .MuiTypography-h3,
+.dark-mode .products__page .MuiTypography-h4,
+.dark-mode .products__page .MuiTypography-h5,
+.dark-mode .products__page .MuiTypography-h6 {
+  color: #f1f5f9 !important;
+}
+
+.dark-mode .products__page .MuiTypography-body1,
+.dark-mode .products__page .MuiTypography-body2 {
+  color: #cbd5e1 !important;
 }
 
 /* Mobile Responsive */
