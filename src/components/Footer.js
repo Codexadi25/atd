@@ -30,7 +30,7 @@ function Footer() {
             <div className='heading'>
               Helpful Links
             </div>
-            <a href='/t&c#intro' className='links'>FAQs</a>
+            <a href='/faqs' className='links'>FAQs</a>
             <a href='/help' className='links'>Help & Support</a>
             <a href='terms-conditions' className='links'>Terms & Conditions</a>
             <a href="/contact" className='links'>Join our team</a>

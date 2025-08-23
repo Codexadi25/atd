@@ -12,6 +12,7 @@ import ProductsPage from '../pages/ProductsPage.js';
 import TestAnimation from '../pages/TestAnimation.js';
 import Blog from '../blogs/pages/Blog.jsx';
 import { sampleBlogs } from '../blogs/data/sampleBlogs';
+import TermsAndConditions from '../pages/TermsAndConditions.js'
 
 
 function AppRoutes() {
@@ -38,6 +39,7 @@ function AppRoutes() {
                   <Route path="/test-animation" element={<TestAnimation/>} />
                   {/* <Route path="/products" element={<Error/>} /> */}
                   <Route path="/blogs" element={<Blog blogs={blogs} />} />
+                  <Route path="/terms-conditions" element={<TermsAndConditions/>} />
                </Route>
                <Route path="*" element={<UserLayout />} > 
                   <Route path="*" element={<Error/>} />
