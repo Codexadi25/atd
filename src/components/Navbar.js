@@ -30,13 +30,15 @@ function Navbar() {
                 onClick={toggleMenu}>About</Link>
                {/* <Link to='/services'>Services</Link> */}
                {/* <ServiceComponent/> */}
-               <div class="productDropdown">
+               {/* <div class="productDropdown">
                   <Link to='/products' class="productButton">Products</Link>
                   <div class="products">
                      <Link to='/Acebotv2.3' className='navLinkBtn' onClick={toggleMenu}>Acebot v2.3</Link>
                      <Link to='/Diretov1.4' className='navLinkBtn' onClick={toggleMenu}>Direto v1.4</Link>
                   </div>
-               </div>
+               </div> */}
+               <Link to='/blogs' className='navLinkBtn'
+                onClick={toggleMenu}>Blogs</Link>
                <Link to='/pricing' className='navLinkBtn'
                 onClick={toggleMenu}>Pricings</Link>
                <Link to='/contact' className='navLinkBtn'
