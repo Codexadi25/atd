@@ -8,6 +8,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { initContactEmailJS, sendContactFormEmail } from '../utils/contactUsUtility';
 import { sendContactFormConfirmation } from '../utils/confirmationEmailUtility';
+import emailjs from '@emailjs/browser';
+import { getEmailJSConfig } from '../config/emailjs.config';
 
 const ContactUs = () => {
   
@@ -124,7 +126,18 @@ const ContactUs = () => {
   // No need to generate it here
 
   useEffect(() => {
-    initContactEmailJS();
+    // initialize EmailJS client with public key from .env
+    const cfg = getEmailJSConfig();
+    if (cfg && cfg.publicKey) {
+      try {
+        emailjs.init(cfg.publicKey);
+        console.log('EmailJS initialized with public key from .env');
+      } catch (err) {
+        console.warn('EmailJS init failed', err);
+      }
+    } else {
+      console.warn('EmailJS public key missing in environment variables');
+    }
   }, []);
 
   const handleSubmit = async (e) => {

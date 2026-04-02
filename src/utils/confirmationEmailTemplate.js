@@ -1,12 +1,10 @@
 // confirmationEmailTemplate.js - Customer confirmation email utility
 
 import emailjs from '@emailjs/browser';
+import { getEmailJSConfig } from '../config/emailjs.config';
 
-const CONFIRMATION_CONFIG = {
-  serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_b9ecwpr',
-  templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_confirmation',
-  publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '1a1enk0G-nfJjaAJ3'
-};
+const CONFIRMATION_CONFIG = getEmailJSConfig().CONFIRMATION;
+const EMAILJS_PUBLIC_KEY = getEmailJSConfig().publicKey;
 
 /**
  * Send confirmation email to customer
@@ -68,7 +66,7 @@ AI Digital Solutions for Modern Businesses
       CONFIRMATION_CONFIG.serviceId,
       CONFIRMATION_CONFIG.templateId,
       templateParams,
-      CONFIRMATION_CONFIG.publicKey
+      EMAILJS_PUBLIC_KEY
     );
 
     console.log('Confirmation email sent successfully:', response);
