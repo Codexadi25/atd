@@ -9,6 +9,8 @@ import Pricing from "../pages/Pricing.js";
 import FAQs from "../pages/FAQs.js";
 import Error from "../pages/Error.js";
 import ProductsPage from '../pages/ProductsPage.js';
+import RevenueOSPage from '../pages/products/RevenueOSPage.js';
+import SupportHubPage from '../pages/products/SupportHubPage.js';
 import TestAnimation from '../pages/TestAnimation.js';
 import Blog from '../blogs/pages/Blog.jsx';
 import { sampleBlogs } from '../blogs/data/sampleBlogs';
@@ -36,8 +38,9 @@ function AppRoutes() {
                   <Route path="/faqs" element={<FAQs />} />
                   <Route path="/pricing" element={<Pricing />} />
                   <Route path="/products" element={<ProductsPage/>} />
+                  <Route path="/products/revenueos" element={<RevenueOSPage/>} />
+                  <Route path="/products/supporthub" element={<SupportHubPage/>} />
                   <Route path="/test-animation" element={<TestAnimation/>} />
-                  {/* <Route path="/products" element={<Error/>} /> */}
                   <Route path="/blogs" element={<Blog blogs={blogs} />} />
                   <Route path="/terms-conditions" element={<TermsAndConditions/>} />
                </Route>

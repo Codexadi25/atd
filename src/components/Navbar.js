@@ -22,7 +22,7 @@ function Navbar() {
                <img src={logo} alt="AdityaTech&Devoops"/>
             </Link>
          </div>
-            <div class={`navLinks ${isMenuOpen ? 'navLinkActive' : 'navLinkHidden'}`}>
+            <div className={`navLinks ${isMenuOpen ? 'navLinkActive' : 'navLinkHidden'}`}>
                <CloseIcon className='closeMenueBtn' onClick={toggleMenu} />
                <Link to={'/'} className='navLinkBtn'
                 onClick={toggleMenu}>Home</Link>
@@ -30,11 +30,18 @@ function Navbar() {
                 onClick={toggleMenu}>About</Link>
                {/* <Link to='/services'>Services</Link> */}
                {/* <ServiceComponent/> */}
-               <div class="productDropdown">
-                  <Link to='/products' class="productButton">Products</Link>
-                  <div class="products">
-                     <Link to='/Acebotv2.3' className='navLinkBtn' onClick={toggleMenu}>Acebot v2.3</Link>
-                     <Link to='/Diretov1.4' className='navLinkBtn' onClick={toggleMenu}>Direto v1.4</Link>
+               <div className="productDropdown">
+                  <Link to='/products' className="productButton">Products</Link>
+                  <div className="products">
+                     <Link to='/products/revenueos' className='navLinkBtn' onClick={toggleMenu}>
+                       <span style={{marginRight: 6}}>📊</span> RevenueOS
+                     </Link>
+                     <Link to='/products/supporthub' className='navLinkBtn' onClick={toggleMenu}>
+                       <span style={{marginRight: 6}}>🛡️</span> SupportHub
+                     </Link>
+                     <Link to='/products' className='navLinkBtn' onClick={toggleMenu} style={{borderTop: '1px solid #f0f0f0', marginTop: 4}}>
+                       View All →
+                     </Link>
                   </div>
                </div>
                <Link to='/blogs' className='navLinkBtn'
@@ -56,4 +63,4 @@ function Navbar() {
    )
 }
 
-export default Navbar
+export default Navbar

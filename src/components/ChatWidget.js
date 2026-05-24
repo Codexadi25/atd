@@ -4,216 +4,156 @@ import faqResponses from "../utils/faqResponses.js";
 import { sendChatTicketEmail } from "../utils/chatTicketUtility";
 import { sendChatBotConfirmation } from "../utils/confirmationEmailUtility";
 
-const AWAY_MESSAGE = "Seems like you are away and everything is working fine. If you're still facing any issue just ping me here, we'll get back to you as soon as possible! 🕒";
+const AWAY_MESSAGE =
+  "Seems like you've been away. If you're still facing any issue, just ping me here — we'll get back to you as soon as possible! 🕒";
+
+// Send icon SVG
+const SendIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="22" y1="2" x2="11" y2="13" />
+    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+  </svg>
+);
 
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! Ask me anything about our services 😊" },
+    { sender: "bot", text: "Hi there! 👋 I'm the ATD assistant. Ask me anything about our services or let me help raise a support ticket." },
   ]);
   const [input, setInput] = useState("");
   const [lastUserMsgTime, setLastUserMsgTime] = useState(Date.now());
   const [isAway, setIsAway] = useState(false);
-  
-  // New state for user information collection
+  const [isTyping, setIsTyping] = useState(false);
+
+  // User info collection state
   const [collectingUserInfo, setCollectingUserInfo] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    name: '',
-    email: '',
-    phone: ''
-  });
-  const [currentInfoField, setCurrentInfoField] = useState('name');
-  const [pendingQuery, setPendingQuery] = useState('');
+  const [userInfo, setUserInfo] = useState({ name: "", email: "", phone: "" });
+  const [currentInfoField, setCurrentInfoField] = useState("name");
+  const [pendingQuery, setPendingQuery] = useState("");
 
   const chatEndRef = useRef(null);
   const awayTimeoutRef = useRef(null);
+  const inputRef = useRef(null);
 
-  // ✅ AUTO-SCROLL when messages update, chat opens, or away/resume state changes
+  // Auto-scroll
   useEffect(() => {
     if (open) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, open, isAway]);
+  }, [messages, open, isAway, isTyping]);
 
-  // ⏰ Away message automation
+  // Focus input on open
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [open]);
+
+  // Away message automation
   useEffect(() => {
     if (!open || isAway) return;
     if (awayTimeoutRef.current) clearTimeout(awayTimeoutRef.current);
-
     const lastMsg = messages[messages.length - 1];
-    if (lastMsg && lastMsg.sender === "bot" && lastMsg.text === AWAY_MESSAGE) return;
+    if (lastMsg?.sender === "bot" && lastMsg.text === AWAY_MESSAGE) return;
 
     awayTimeoutRef.current = setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: AWAY_MESSAGE,
-        },
-      ]);
+      setMessages((prev) => [...prev, { sender: "bot", text: AWAY_MESSAGE }]);
       setIsAway(true);
-    }, 60000); // 1 minute
+    }, 60000);
 
     return () => clearTimeout(awayTimeoutRef.current);
   }, [open, lastUserMsgTime, messages, isAway]);
 
-  // Function to collect user information
+  // Simulate bot typing delay then show response
+  const showBotReply = (text, delay = 700) => {
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, { sender: "bot", text }]);
+    }, delay);
+  };
+
   const collectUserInfo = (query) => {
     setPendingQuery(query);
     setCollectingUserInfo(true);
-    setCurrentInfoField('name');
-    
-    setMessages((prev) => [
-      ...prev,
-      {
-        sender: "bot",
-        text: "I need some information to create a support ticket for you. Let me collect your details:",
-      },
-      {
-        sender: "bot",
-        text: "What's your name?",
-      },
-    ]);
+    setCurrentInfoField("name");
+    showBotReply("I'll create a support ticket for you! First, could you share your name?", 600);
   };
 
-  // Function to handle user information input
   const handleUserInfoInput = () => {
     if (!input.trim()) return;
-
-    const newUserInfo = { ...userInfo };
-    newUserInfo[currentInfoField] = input.trim();
+    const newUserInfo = { ...userInfo, [currentInfoField]: input.trim() };
     setUserInfo(newUserInfo);
 
-    if (currentInfoField === 'name') {
-      setCurrentInfoField('email');
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: `Thanks ${input.trim()}! What's your email address?`,
-        },
-      ]);
-    } else if (currentInfoField === 'email') {
-      setCurrentInfoField('phone');
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: `Great! And what's your phone number?`,
-        },
-      ]);
-    } else if (currentInfoField === 'phone') {
-      // All information collected, create ticket
+    if (currentInfoField === "name") {
+      setCurrentInfoField("email");
+      showBotReply(`Nice to meet you, ${input.trim()}! What's your email address?`, 600);
+    } else if (currentInfoField === "email") {
+      setCurrentInfoField("phone");
+      showBotReply("Great! And what's your phone number?", 600);
+    } else if (currentInfoField === "phone") {
       setCollectingUserInfo(false);
-      setCurrentInfoField('name');
-      
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "Perfect! Now let me create a support ticket for you...",
-        },
-      ]);
-
-      // Create ticket with collected information
+      setCurrentInfoField("name");
+      showBotReply("Perfect! Creating your support ticket now...", 400);
       createTicket(newUserInfo, pendingQuery);
     }
 
     setInput("");
   };
 
-  // Function to create ticket
-  const createTicket = async (userInfo, query) => {
+  const createTicket = async (info, query) => {
     try {
       const result = await sendChatTicketEmail({
         userQuery: query,
-        userName: userInfo.name,
-        userEmail: userInfo.email,
-        userPhone: userInfo.phone,
-        category: 'General Inquiry',
-        priority: 'Medium'
+        userName: info.name,
+        userEmail: info.email,
+        userPhone: info.phone,
+        category: "General Inquiry",
+        priority: "Medium",
       });
 
-             if (result.success) {
-         // Send confirmation email to user
-         try {
-           const confirmationResult = await sendChatBotConfirmation({
-             userName: userInfo.name,
-             userEmail: userInfo.email,
-             userPhone: userInfo.phone,
-             ticketId: result.ticketId,
-             userQuery: query,
-             category: 'General Inquiry',
-             priority: 'Medium'
-           });
+      if (result.success) {
+        try {
+          const confirmResult = await sendChatBotConfirmation({
+            userName: info.name,
+            userEmail: info.email,
+            userPhone: info.phone,
+            ticketId: result.ticketId,
+            userQuery: query,
+            category: "General Inquiry",
+            priority: "Medium",
+          });
+          if (!confirmResult.success) console.warn("⚠️ Confirmation email failed:", confirmResult.error);
+        } catch (e) {
+          console.error("❌ Confirmation email error:", e);
+        }
 
-           if (confirmationResult.success) {
-             console.log('✅ Chat Bot: Confirmation email sent successfully');
-           } else {
-             console.warn('⚠️ Chat Bot: Confirmation email failed:', confirmationResult.error);
-           }
-         } catch (error) {
-           console.error('❌ Chat Bot: Error sending confirmation email:', error);
-         }
-
-         setMessages((prev) => [
-           ...prev,
-           {
-             sender: "bot",
-             text: `✅ Ticket created successfully!`,
-           },
-           {
-             sender: "bot",
-             text: `Your ticket ID is: **${result.ticketId}**`,
-           },
-           {
-             sender: "bot",
-             text: `Our team will reach out to you at ${userInfo.email} or ${userInfo.phone} within 24-48 hours with a proper response and assistance.`,
-           },
-           {
-             sender: "bot",
-             text: `📧 A confirmation email has been sent to ${userInfo.email} with your ticket details.`,
-           },
-         ]);
-       } else if (result.requiresUserInfo) {
-        setMessages((prev) => [
-          ...prev,
-          {
-            sender: "bot",
-            text: "I need more information to create your ticket. Please provide your complete details.",
-          },
-        ]);
+        setTimeout(() => {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: `✅ Ticket created! Your ID is **${result.ticketId}**.` },
+            { sender: "bot", text: `Our team will reach out to ${info.email} or ${info.phone} within 24–48 hours.` },
+            { sender: "bot", text: `📧 A confirmation email has been sent to ${info.email}.` },
+          ]);
+        }, 1200);
+      } else if (result.requiresUserInfo) {
+        showBotReply("I need a bit more detail. Let's try again.", 600);
         collectUserInfo(query);
       } else {
-        setMessages((prev) => [
-          ...prev,
-          {
-            sender: "bot",
-            text: "Sorry, I couldn't create the ticket. Please try again or contact support directly.",
-          },
-        ]);
+        showBotReply("Sorry, I couldn't create the ticket. Please try again or email us directly.", 600);
       }
-    } catch (error) {
-      console.error('Error creating ticket:', error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "Oops! Something went wrong. We couldn't create your ticket. Please try again later.",
-        },
-      ]);
+    } catch (err) {
+      console.error("Error creating ticket:", err);
+      showBotReply("Oops! Something went wrong. Please try again later.", 600);
     }
   };
 
   const handleSend = async () => {
-    if (!input.trim() || isAway) return;
+    if (!input.trim() || isAway || isTyping) return;
 
     setLastUserMsgTime(Date.now());
+    setMessages((prev) => [...prev, { sender: "user", text: input }]);
 
-    const userMsg = { sender: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-
-    // If collecting user info, handle that flow
     if (collectingUserInfo) {
       handleUserInfoInput();
       return;
@@ -221,36 +161,32 @@ const ChatWidget = () => {
 
     const found = faqResponses.find((faq) => faq.question.test(input));
     if (found) {
-      const botMsg = { sender: "bot", text: found.answer };
-      setMessages((prev) => [...prev, botMsg]);
+      showBotReply(found.answer);
     } else {
-      // Start collecting user information for ticket creation
       collectUserInfo(input);
     }
-    
+
     setInput("");
   };
 
-  // Footer actions
   const handleClose = () => {
     setOpen(false);
-    // Reset user info collection state
     setCollectingUserInfo(false);
-    setUserInfo({ name: '', email: '', phone: '' });
-    setCurrentInfoField('name');
-    setPendingQuery('');
+    setUserInfo({ name: "", email: "", phone: "" });
+    setCurrentInfoField("name");
+    setPendingQuery("");
   };
 
   const handleStartFresh = () => {
-    setMessages([{ sender: "bot", text: "Hi! Ask me anything about our services 😊" }]);
+    setMessages([{ sender: "bot", text: "Hi there! 👋 I'm the ATD assistant. Ask me anything about our services or let me help raise a support ticket." }]);
     setInput("");
     setIsAway(false);
+    setIsTyping(false);
     setLastUserMsgTime(Date.now());
-    // Reset user info collection state
     setCollectingUserInfo(false);
-    setUserInfo({ name: '', email: '', phone: '' });
-    setCurrentInfoField('name');
-    setPendingQuery('');
+    setUserInfo({ name: "", email: "", phone: "" });
+    setCurrentInfoField("name");
+    setPendingQuery("");
   };
 
   const handleContinue = () => {
@@ -259,55 +195,126 @@ const ChatWidget = () => {
     setLastUserMsgTime(Date.now());
   };
 
+  const inputPlaceholder = collectingUserInfo
+    ? currentInfoField === "name"
+      ? "Enter your name…"
+      : currentInfoField === "email"
+      ? "Enter your email…"
+      : "Enter your phone number…"
+    : "Ask me anything…";
+
+  const today = new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "short" });
+
   return (
     <>
-      <div className={`chat-button ${open ? "hidden" : ""}`} onClick={() => setOpen(true)}>
+      {/* FAB Button */}
+      <div
+        className={`chat-button ${open ? "hidden" : ""}`}
+        onClick={() => setOpen(true)}
+        title="Chat with us"
+        role="button"
+        aria-label="Open chat"
+      >
         💬
       </div>
+
+      {/* Chat Panel */}
       {open && (
         <div className="chat-box">
+          {/* Header */}
           <div className="chat-header">
-            <span>Chat with us</span>
-            <button className="closeBtn" onClick={handleClose}>×</button>
+            <div className="chat-header-top">
+              <div className="chat-header-left">
+                <div className="chat-avatar">🤖</div>
+                <div className="chat-header-info">
+                  <p className="chat-header-name">ATD Support</p>
+                  <p className="chat-header-status">
+                    <span className="chat-status-dot" />
+                    Online · Usually replies instantly
+                  </p>
+                </div>
+              </div>
+              <div className="chat-header-actions">
+                <button
+                  className="chat-action-btn"
+                  onClick={handleStartFresh}
+                  title="Start fresh chat"
+                  aria-label="Start fresh"
+                >
+                  ↺
+                </button>
+                <button
+                  className="chat-action-btn"
+                  onClick={handleClose}
+                  title="Close chat"
+                  aria-label="Close"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <div className="chat-header-band">Aditya Tech &amp; Devoops · AI Assistant</div>
           </div>
+
+          {/* Messages */}
           <div className="chat-body">
+            <div className="chat-date">{today}</div>
+
             {messages.map((msg, i) => (
-              <div key={i} className={`chat-msg ${msg.sender === "user" ? "user" : "bot"}`}>
-                {msg.text}
+              <div key={i} className={`chat-msg-wrap ${msg.sender}`}>
+                <div className="chat-msg-avatar">
+                  {msg.sender === "bot" ? "🤖" : "👤"}
+                </div>
+                <div className="chat-msg">{msg.text}</div>
               </div>
             ))}
+
+            {/* Typing indicator */}
+            {isTyping && (
+              <div className="chat-typing">
+                <div className="chat-msg-avatar" style={{ background: 'linear-gradient(135deg,#0044aa,#004cff)', color:'#fff', width:26, height:26, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12 }}>🤖</div>
+                <div className="chat-typing-bubble">
+                  <span className="typing-dot" />
+                  <span className="typing-dot" />
+                  <span className="typing-dot" />
+                </div>
+              </div>
+            )}
+
             <div ref={chatEndRef} />
           </div>
+
+          {/* Footer */}
           <div className="chat-footer">
             {isAway ? (
               <div className="away-options">
                 <button onClick={handleClose}>Close Chat</button>
-                <button onClick={handleStartFresh}>Start Fresh Chat</button>
+                <button onClick={handleStartFresh}>Start Fresh</button>
                 <button onClick={handleContinue}>Continue Chat</button>
               </div>
             ) : (
-              <>
+              <div className="chat-input-row">
                 <input
+                  ref={inputRef}
                   type="text"
-                  placeholder={
-                    collectingUserInfo 
-                      ? currentInfoField === 'name' 
-                        ? "Enter your name..." 
-                        : currentInfoField === 'email' 
-                        ? "Enter your email..." 
-                        : "Enter your phone number..."
-                      : "Type your question..."
-                  }
+                  placeholder={inputPlaceholder}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                  disabled={isAway}
+                  disabled={isAway || isTyping}
+                  aria-label="Chat input"
                 />
-                <button onClick={handleSend} disabled={isAway}>
-                  {collectingUserInfo ? "Submit" : "Send"}
+                <button
+                  className="chat-send-btn"
+                  onClick={handleSend}
+                  disabled={isAway || isTyping || !input.trim()}
+                  aria-label="Send message"
+                >
+                  <SendIcon />
                 </button>
-              </>
+              </div>
             )}
+            <div className="chat-branding">Powered by ATD Support AI</div>
           </div>
         </div>
       )}
