@@ -12,7 +12,7 @@ import emailjs from '@emailjs/browser';
 import { getEmailJSConfig } from '../config/emailjs.config';
 
 const ContactUs = () => {
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -53,7 +53,7 @@ const ContactUs = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
-      details: 'contact@adityatechndevoops.com',
+      details: 'adityasahu.dev@gmail.com',
       subtext: 'We\'ll respond within 24 hours',
       color: 'blue'
     },
@@ -112,7 +112,7 @@ const ContactUs = () => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -155,7 +155,7 @@ const ContactUs = () => {
 
       console.log('🔍 Contact Form: Sending admin ticket...');
       console.log('🔍 Contact Form: Ticket payload:', ticketPayload);
-      
+
       // Send admin ticket
       const adminResult = await sendContactFormEmail({
         name: ticketPayload.name,
@@ -167,11 +167,11 @@ const ContactUs = () => {
         category: ticketPayload.category,
         message: ticketPayload.message
       });
-      
+
       console.log('🔍 Contact Form: Admin result:', adminResult);
 
       console.log('🔍 Contact Form: Sending customer confirmation...');
-      
+
       // Try sending customer confirmation regardless of admin email outcome
       const customerResult = await sendContactFormConfirmation({
         name: ticketPayload.name,
@@ -182,7 +182,7 @@ const ContactUs = () => {
         category: ticketPayload.category,
         message: ticketPayload.message
       });
-      
+
       console.log('🔍 Contact Form: Customer result:', customerResult);
 
       // Only consider ticket created if admin email was successful
@@ -247,7 +247,7 @@ const ContactUs = () => {
             </div>
           </div>
           <p className="header-description">
-            Have a project in mind or need support? We're here to help you succeed. 
+            Have a project in mind or need support? We're here to help you succeed.
             Reach out to us and let's discuss how we can bring your ideas to life.
           </p>
         </div>
@@ -276,9 +276,9 @@ const ContactUs = () => {
               <h3 className="social-title">Follow Us</h3>
               <div className="social-links">
                 {socialLinks.map((social, index) => (
-                  <a 
-                    key={index} 
-                    href={social.url} 
+                  <a
+                    key={index}
+                    href={social.url}
                     className="social-link"
                     aria-label={social.label}
                   >
@@ -462,8 +462,8 @@ const ContactUs = () => {
                 {errors.message && <span className="error-text">{errors.message}</span>}
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="submit-button"
                 disabled={formStatus.isSubmitting}
               >

@@ -18,28 +18,14 @@ function useInView(threshold = 0) {
 }
 
 const FEATURED_PRODUCTS = [
-  {
-    slug: 'revenueos',
-    name: 'RevenueOS',
-    tagline: 'AI Revenue Engine for Your Business',
-    desc: 'Uses AI to optimize your pricing, rebuild your funnels, and convert more customers — without hiring a growth team.',
-    tags: ['AI', 'SaaS', 'Revenue', 'Pricing'],
-    status: 'Launching 2025',
-    statusColor: '#00bcd4',
-    icon: '📊',
-    gradient: 'linear-gradient(135deg, rgba(0,188,212,0.06), rgba(0,68,170,0.04))',
-    borderColor: 'rgba(0,188,212,0.25)',
-    accent: '#0044aa',
-    accentSecondary: '#004cff',
-    highlights: ['AI Pricing Suggestions', 'Funnel Analyzer', 'WhatsApp Automation', 'Landing Page Builder'],
-  },
+  
   {
     slug: 'supporthub',
     name: 'SupportHub',
     tagline: 'Centralized Support Hub for Teams',
     desc: 'WIMOBOT — a comprehensive platform for canned responses, private notes, team feedback, and broadcast messaging with role-based access control.',
     tags: ['Node.js', 'MongoDB', 'WebSockets', 'Open Source'],
-    status: 'Open Source · v2.4.9',
+    status: 'LTS · v2.4.9',
     statusColor: '#004cff',
     icon: '🛡️',
     gradient: 'linear-gradient(135deg, rgba(0,76,255,0.06), rgba(0,188,212,0.04))',
@@ -47,6 +33,36 @@ const FEATURED_PRODUCTS = [
     accent: '#004cff',
     accentSecondary: '#00bcd4',
     highlights: ['Canned Responses Library', 'Private Notes System', 'Feedback & Voting', 'Role-Based Access'],
+  },
+  {
+    slug: 'nexlog',
+    name: 'NEXLOG',
+    tagline: 'B2B Logistics & Dispatch Platform',
+    desc: 'End-to-end fleet management SaaS with real-time tracking, intelligent dispatch, and support automation for high-volume delivery networks.',
+    tags: ['Logistics', 'Dispatch', 'WebSockets', 'SaaS'],
+    status: 'Launched in 2026',
+    statusColor: '#009dff',
+    icon: '🚚',
+    gradient: 'linear-gradient(135deg, rgba(0, 55, 255, 0.06), rgba(34, 60, 255, 0.04))',
+    borderColor: 'rgba(0, 30, 255, 0.25)',
+    accent: '#0099ff',
+    accentSecondary: '#1100ff',
+    highlights: ['Real-Time Fleet Tracking', 'Intelligent Dispatch Engine', 'Support Lifeline Dashboard', 'Shipment Lifecycle Designer'],
+  },
+  {
+    slug: 'revenueos',
+    name: 'RevenueOS',
+    tagline: 'AI Revenue Engine for Your Business',
+    desc: 'Uses AI to optimize your pricing, rebuild your funnels, and convert more customers — without hiring a growth team.',
+    tags: ['AI', 'SaaS', 'Revenue', 'Pricing'],
+    status: 'Launched in 2026',
+    statusColor: '#00bcd4',
+    icon: '📊',
+    gradient: 'linear-gradient(135deg, rgba(0,188,212,0.06), rgba(0,68,170,0.04))',
+    borderColor: 'rgba(0,188,212,0.25)',
+    accent: '#0044aa',
+    accentSecondary: '#004cff',
+    highlights: ['AI Pricing Suggestions', 'Funnel Analyzer', 'WhatsApp Automation', 'Landing Page Builder'],
   },
 ];
 
@@ -110,7 +126,7 @@ export default function ProductsPage() {
     <div className="pp-page">
       <SEO
         title="Products — Aditya Tech & Devoops"
-        description="Explore our flagship products RevenueOS and SupportHub, plus our library of website templates, dashboards, and custom digital solutions."
+        description="Explore our flagship products RevenueOS, SupportHub, and NEXLOG, plus our library of website templates, dashboards, and custom digital solutions."
       />
 
       {/* HERO */}

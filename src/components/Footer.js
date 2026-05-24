@@ -68,7 +68,7 @@ function Footer() {
       <hr/>
       <p className='footerBottomText'>By continuing past this page, you agree to our Terms of Service, Cookie, Privacy, and Content Policies. All trademarks are properties of their respective owners.</p>
       <div className='footerBottom'>
-        <span>Copyright-2024 &copy; All rights reserved.</span>
+        <span>Copyright &copy; 2026 | All rights reserved.</span>
         <span>
           <div id="google_translate_element"></div>
         </span>

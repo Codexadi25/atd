@@ -164,7 +164,7 @@ export default function RevenueOSPage() {
         <div className="ros-hero-content">
           <div className="ros-badge">
             <span className="ros-badge-dot" />
-            Launching 2025 · AI-Powered Revenue Growth
+            Launched in 2026 · AI-Powered Revenue Growth
           </div>
 
           <h1 className="ros-h1">
